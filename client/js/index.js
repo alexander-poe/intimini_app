@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	return ReactDOM.render(
 		<Provider store={store}>
 			<WelcomePage />
-		</Provider>,	
+		</Provider>,
 		document.getElementById('root')
 	);
 });

@@ -14,8 +14,8 @@ export const getUser = () => (dispatch) => {
 				}
 				return res.json()
 			}).then(res => {
-				console.log('success');
+				dispatch(getUserSuccess());
 			}).catch(err => {
-				console.log('error:', err)
+				console.log('error:', err);
 			})
 		}

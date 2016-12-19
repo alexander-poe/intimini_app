@@ -8,9 +8,8 @@ class WelcomePage extends React.Component {
 		super(props);
 	}
 
-
 	componentDidMount() {
-		this.props.dispatch(actions.getUser());	
+		this.props.dispatch(actions.getUser());
 	}
 
 	render() {

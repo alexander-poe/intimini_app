@@ -3,7 +3,12 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-    return state = state || initialState;
+	switch (actions.type) {
+		case actions.getUserSuccess:
+			return {...state, user: action.user}
+		default:
+			return state = state || initialState;
+	}
 }
 
-export default reducer; 
+export default reducer;
