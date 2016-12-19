@@ -17,11 +17,11 @@ const knex = require('knex')({
 
 app.use(bodyParser.json());
 
-// app.get('/users', (req, res) => {
-// 	knex('users').select('id', 'username', 'password').then((users) => {
-// 		return res.json({users});
-// 	});
-// });
+app.get('/users', (req, res) => {
+	knex('users').select('id', 'username', 'password').then((users) => {
+		return res.json({users});
+	});
+});
 
 app.use(express.static(process.env.CLIENT_PATH));
 
