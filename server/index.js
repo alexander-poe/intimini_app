@@ -26,8 +26,22 @@ app.get('/users', (req, res) => {
 app.get('/entries', (req, res) => {
     knex('entries').select('id', 'mood', 'date', 'entry', 'user_id').then((entries) => {
         return res.json({entries})
+    });
+});
+
+
+app.post('/entries', (req, res) => {
+    const body = req.body;
+    console.log(body.the);
+    knex.insert({mood: "zaz", date: "12101201", entry: 'sheet', user_id: 2}).into('entries').then(id => {
+        console.log(id);
     })
+    .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
 })
+
 
 app.use(express.static(process.env.CLIENT_PATH));
 
