@@ -1,5 +1,6 @@
 const url = "http://localhost:8080/users";
 
+
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const getUserSuccess = user => ({
     type: GET_USER_SUCCESS,
@@ -14,7 +15,7 @@ export const getUser = () => (dispatch) => {
 				}
 				return res.json()
 			}).then(res => {
-				dispatch(getUserSuccess());
+				dispatch(getUserSuccess(res.users));
 			}).catch(err => {
 				console.log('error:', err);
 			})
