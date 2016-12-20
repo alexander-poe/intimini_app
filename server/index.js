@@ -16,23 +16,24 @@ const knex = require('knex')({
 });
 
 app.use(bodyParser.json());
+app.use(express.static(process.env.CLIENT_PATH));
 
 app.get('/users', (req, res) => {
-	knex('users').select('id', 'username', 'password').then((users) => {
-		return res.json({users});
-	});
+    knex('users').select('id', 'username', 'password').then((users) => {
+        return res.json({users});
+    });
 });
 
-app.get('/entries', (req, res) => {
-    knex('entries').select('id', 'mood', 'date', 'entry', 'user_id').then((entries) => {
+app.get('/entries/u', (req, res) => {
+    knex('entries').select('mood', 'date', 'entry', 'user_id').then((entries) => {
         return res.json({entries})
     });
 });
 
 app.post('/users', (req, res) => {
     const body = req.body;
-    console.log(body.the);
-    knex.insert({id: 3, username: "dog", password: "im a dog"}).into('users').then(id => {
+    console.log(body);
+    knex.insert({username: body.username, password: body.password}).into('users').then(id => {
         console.log(id);
     })
     .finally(function() {
@@ -44,9 +45,20 @@ app.post('/users', (req, res) => {
 
 app.post('/entries', (req, res) => {
     const body = req.body;
-    console.log(body.the);
-    knex.insert({mood: "zaz", date: "12101201", entry: 'sheet', user_id: 2}).into('entries').then(id => {
+    console.log(body);
+    knex.insert({mood: body.mood, date: new Date(), entry: body.entry, user_id: body.user_id}).into('entries').then(id => {
         console.log(id);
+    })
+    .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
+    //better response objects ? status , id
+})
+
+app.put('/entries', (req, res) => {
+    knex('entries').where({id: 1}).update({mood:"awesomestAF"}).then(count => {
+        console.log(count);
     })
     .finally(function() {
         knex.destroy();
@@ -55,7 +67,40 @@ app.post('/entries', (req, res) => {
 })
 
 
-app.use(express.static(process.env.CLIENT_PATH));
+app.put('/users', (req, res) => {
+    knex('users').where({id: 3}).update({username:"djangoUnchained"}).then(count => {
+        console.log(count);
+    })
+    .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
+})
+
+
+
+
+app.delete('/users', (req, res) => {
+    knex('users').where({id: 3, username: "dog", password: "im a dog"}).del().then(count => {
+        console.log(count);
+    })
+     .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
+})
+
+app.delete('/entries', (req, res) => {
+    knex('entries').where({mood: "zaz", date: "12101201", entry: 'sheet', user_id: 2}).del().then(count => {
+        console.log(count);
+    })
+     .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
+})
+
+
 
 function runServer() {
     return new Promise((resolve, reject) => {

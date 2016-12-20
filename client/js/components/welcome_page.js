@@ -16,7 +16,7 @@ class WelcomePage extends React.Component {
 		console.log(this.props)
 		return (
 			<div>
-				<h2>OH HAI: {this.props.message} </h2>
+				<h2>OH HAI: {this.props.user[2]} </h2>
 			</div>
 		)
 	}
