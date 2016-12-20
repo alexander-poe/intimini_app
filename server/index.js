@@ -29,6 +29,18 @@ app.get('/entries', (req, res) => {
     });
 });
 
+app.post('/users', (req, res) => {
+    const body = req.body;
+    console.log(body.the);
+    knex.insert({id: 3, username: "dog", password: "im a dog"}).into('users').then(id => {
+        console.log(id);
+    })
+    .finally(function() {
+        knex.destroy();
+    })
+    return res.json({})
+})
+
 
 app.post('/entries', (req, res) => {
     const body = req.body;
