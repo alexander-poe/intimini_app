@@ -2,28 +2,40 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
-
 class WelcomePage extends React.Component {
 	constructor(props) {
+		console.log('welcome page', props.store);
 		super(props);
+		this.sendDelete = this.sendDelete.bind(this);
 	}
 
-	componentDidMount() {
+	componentDidMount () {
 		this.props.dispatch(actions.getUser());
 	}
 
+	sendDelete (event) {
+		this.props.dispatch(actions.deleteUser());
+	}
+
 	render() {
-		console.log(this.props)
+		const users = this.props.store.userslist.map((user, idx) => {
+			return <li key={idx}>{user.username}</li>
+		})
+
 		return (
 			<div>
-				<h2>OH HAI: {this.props.message} </h2>
+				<ul>
+					{users}
+				</ul>
+				<button onClick={this.sendDelete} />
 			</div>
 		)
 	}
+
 }
 
 const mapStateToProps = (state, props) => ({
-	message: state.message
+	store: state
 })
 
 export default connect(mapStateToProps)(WelcomePage);
