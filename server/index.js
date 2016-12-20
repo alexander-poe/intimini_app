@@ -23,6 +23,12 @@ app.get('/users', (req, res) => {
 	});
 });
 
+app.get('/entries', (req, res) => {
+    knex('entries').select('id', 'mood', 'date', 'entry', 'user_id').then((entries) => {
+        return res.json({entries})
+    })
+})
+
 app.use(express.static(process.env.CLIENT_PATH));
 
 function runServer() {
