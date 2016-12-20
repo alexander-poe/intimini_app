@@ -1,9 +1,10 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WelcomePage from './components/welcome_page';
 import { Provider } from 'react-redux';
 import store from './store';
+import WelcomePage from './components/welcome_page';
+import HomePage from './components/home_page';
 
 // Uncomment to return to WelcomePage
 // document.addEventListener('DOMContentLoaded', () => {
