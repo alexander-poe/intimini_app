@@ -17,41 +17,11 @@ const knex = require('knex')({
 
 app.use(bodyParser.json());
 
-let users = [
-	{id: 1,
-	username: "hannah",
-	password: "hannahmccain"},
-	{id: 2,
-	username: "alex",
-	password: "alexpoe"},
-	{id: 3,
-	username: "alexhannah",
-	password: "alexhannah"}
-]
-
 app.get('/users', (req, res) => {
-	// knex('users').select('id', 'username', 'password').then((users) => {
-		return res.json(users);
-	// });
+	knex('users').select('id', 'username', 'password').then((users) => {
+		return res.json({users});
+	});
 });
-
-app.delete('/users', (req, res) => {
-	const userId = req.body.id;
-	if (!req.body) {
-		res.send(400).json({});
-	} else {
-		users = users.filter((user, idx) => {
-			return (users[idx].id !== userId)
-		})
-		return res.sendStatus(204);
-	}
-});
-
-app.post('/users', (req, res) => {
-	// create new user
-})
-
-app.put('/users/:id')
 
 app.use(express.static(process.env.CLIENT_PATH));
 

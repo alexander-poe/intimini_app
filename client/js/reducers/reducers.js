@@ -1,5 +1,4 @@
 import * as actions from '../actions/actions';
-// import { combibneReducers } from 'redux';
 
 /*
 const initial = {

@@ -4,7 +4,6 @@ import * as actions from '../actions/actions';
 
 class WelcomePage extends React.Component {
 	constructor(props) {
-		console.log('welcome page', props.store);
 		super(props);
 		this.sendDelete = this.sendDelete.bind(this);
 	}
@@ -18,10 +17,15 @@ class WelcomePage extends React.Component {
 	}
 
 	render() {
-		const users = this.props.store.userslist.map((user, idx) => {
-			return <li key={idx}>{user.username}</li>
-		})
-
+		let users;
+		debugger;
+		if (!this.props.store.userslist.users) {
+			users = ''
+		} else {
+			users = this.props.store.userslist.users.map((user, idx) => {
+				return <li key={idx}>{user.username}</li>
+			})
+		}
 		return (
 			<div>
 				<ul>
