@@ -5,11 +5,19 @@ import WelcomePage from './components/welcome_page';
 import { Provider } from 'react-redux';
 import store from './store';
 
+// Uncomment to return to WelcomePage
+// document.addEventListener('DOMContentLoaded', () => {
+// 	return ReactDOM.render(
+// 		<Provider store={store}>
+// 			<WelcomePage />
+// 		</Provider>,
+// 		document.getElementById('root')
+// 	);
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
 	return ReactDOM.render(
-		<Provider store={store}>
-			<WelcomePage />
-		</Provider>,
+		<HomePage />,
 		document.getElementById('root')
 	);
 });

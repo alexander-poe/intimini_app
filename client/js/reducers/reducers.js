@@ -1,29 +1,27 @@
 import * as actions from '../actions/actions';
 
-/*
-const initial = {
-	userslist: [
-		{
-			user: "hannah"
-			id,
-			entries: {
-				date,
-				mood,
-				content
-			}
-		}
-		{
-			user: "alex"
-			id,
-			entries: {
-				date,
-				mood,
-				content
-			}
-		}
-	]
-};
-*/
+// const initial = {
+// 	userslist: [
+// 		{
+// 			user: "hannah",
+// 			id: 1,
+// 			entries: {
+// 				date,
+// 				mood,
+// 				content
+// 			}
+// 		},
+// 		{
+// 			user: "alex",
+// 			id: 2,
+// 			entries: {
+// 				date,
+// 				mood,
+// 				content
+// 			}
+// 		}
+// 	]
+// };
 
 const initial = {
 	userslist: [],
@@ -37,15 +35,11 @@ const reducer = (state = initial, action) => {
 			return {
 				...state,
 				userslist: action.userInfo,
-				loading: action.loading,
-				error: action.error
 			};
 		case actions.DELETE_USER_SUCCESS:
 			return {
 				...state,
 				userslist: action.userInfo,
-				loading: action.loading,
-				error: action.error
 			};
 		default:
 			return state;
