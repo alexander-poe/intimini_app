@@ -10,6 +10,7 @@ class WelcomePage extends React.Component {
 
 	componentDidMount () {
 		this.props.dispatch(actions.getUser());
+		this.props.dispatch(actions.getEntries());
 	}
 
 	sendDelete (event) {
@@ -17,19 +18,29 @@ class WelcomePage extends React.Component {
 	}
 
 	render() {
-		let users;
-		debugger;
-		if (!this.props.store.userslist.users) {
-			users = ''
-		} else {
-			users = this.props.store.userslist.users.map((user, idx) => {
-				return <li key={idx}>{user.username}</li>
-			})
-		}
+		const stateUsers = this.props.store.usersReducer.usersList;
+		const stateEntries = this.props.store.entriesReducer.entriesList;
+		let users, entries;
+
+		!stateUsers ?
+		users = '' :
+		users = stateUsers.users.map((user, idx) => {
+			return <li key={idx}>{user.username}</li>
+		})
+
+		!stateEntries ?
+		entries = '' :
+		entries = stateEntries.entries.map((entry, idx) => {
+			return <li key={idx}>{entry.entry}</li>
+		})
+
 		return (
 			<div>
 				<ul>
 					{users}
+				</ul>
+				<ul>
+					{entries}
 				</ul>
 				<button onClick={this.sendDelete} />
 			</div>
