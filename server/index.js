@@ -123,6 +123,7 @@ app.post('/entries', (req, res) => {
 })
 // PUT
 app.put('/entries', (req, res) => {
+	console.log('server-side put entry', req.body)
     const body = req.body;
     if (!body)  {
         return res.status(400).json({
@@ -134,7 +135,7 @@ app.put('/entries', (req, res) => {
             message: 'Missing field: mood'
         })
     }
-    if (typeof body.username !== 'string') {
+    if (typeof body.mood !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: mood'
         })
@@ -142,7 +143,8 @@ app.put('/entries', (req, res) => {
     knex('entries').where({
         id: 1
     }).update({
-        mood: body.mood
+        mood: body.mood,
+				entry: body.entry
     }).then(count => {
         console.log(count);
         return res.json({})

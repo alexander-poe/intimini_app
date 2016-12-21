@@ -78,25 +78,52 @@ export const postNewEntry = (text) => dispatch => {
 		});
 }
 
-// export const deleteEntry = (id) => dispatch => {
-// 	return fetch(entries_url,
-// 		{
-// 			method: "DELETE",
-// 			body: JSON.stringify({cheese: userSelection}),
-// 			headers: {"Content-Type": "application/json"}
-// 		}
-// 	)
-// 		.then(res => {
-// 			if(!res.ok) {
-// 				throw new Error(res.statusText);
-// 			}
-// 			return res.json()
-// 		}).then(res => {
-// 			dispatch(deleteEntrySuccess(res));
-// 		}).catch(err => {
-// 			console.log('error:', err);
-// 		})
-// }
+export const deleteEntry = (id) => dispatch => {
+	return fetch(entries_url + '/' + id,
+		{
+			method: "DELETE",
+			body: JSON.stringify({
+				id: id
+			}),
+			headers: {"Content-Type": "application/json"}
+		}
+	)
+		.then(res => {
+			if(!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json()
+		}).then(res => {
+			dispatch(deleteEntrySuccess(res));
+		}).catch(err => {
+			console.log('error:', err);
+		})
+}
+
+export const updateEntry = (id, text) => dispatch => {
+	console.log('actions.js arg', text);
+	return fetch(entries_url,
+		{
+			method: "PUT",
+			body: JSON.stringify({
+				id: id,
+				mood: "awkward",
+				entry: text
+			}),
+			headers: {"Content-Type": "application/json"}
+		}
+	)
+		.then(res => {
+			if(!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json()
+		}).then(res => {
+			console.log('updated entry');
+		}).catch(err => {
+			console.log('error:', err);
+		})
+}
 
 // ASYNC // USERS
 

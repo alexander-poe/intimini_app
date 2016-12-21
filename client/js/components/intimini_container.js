@@ -8,12 +8,17 @@ import Welcome from './welcome';
 import ErrorDisplay from './error_display';
 import NewEntry from './new_entry';
 
+// HARD CODED:
+// logged-in user id
+
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.logInUser = this.logInUser.bind(this);
 		this.selectEntry = this.selectEntry.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
+		this.deleteEntry = this.deleteEntry.bind(this);
+		this.updateEntry = this.updateEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -43,7 +48,17 @@ class LoginContainer extends React.Component {
 	}
 
 	postNewEntry (text) {
+		console.log(text);
 		this.props.dispatch(actions.postNewEntry(text));
+	}
+
+	deleteEntry (id) {
+		this.props.dispatch(actions.deleteEntry(id));
+		this.props.dispatch(actions.getEntries());
+	}
+
+	updateEntry (id, text) {
+		this.props.dispatch(actions.updateEntry(id, text));
 	}
 
 	render () {
@@ -62,8 +77,6 @@ class LoginContainer extends React.Component {
 
 		if (!stateEntries) {
 			entries = '';
-		// } else if (!stateEntries.entries) {
-		// 	entries = '';
 	} else if (stateEntries.entry) {
 			entries.push(stateEntries.entry[0]);
 		} else {
@@ -82,6 +95,8 @@ class LoginContainer extends React.Component {
 				<DisplayEntries
 					user={isLoggedIn}
 					entries={entries}
+					updateEntry={this.updateEntry}
+					deleteEntry={this.deleteEntry}
 					selectEntry={this.selectEntry}
 				/>;
 			</div>

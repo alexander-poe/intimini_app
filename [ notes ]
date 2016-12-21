@@ -1,0 +1,6 @@
+- contentEditable...?
+- alternative to refs in stateless component? (need to replace hardcoded text)
+- refresh/update to correct pages after changes
+- make separate page for editing
+- update reducers
+- on blur...

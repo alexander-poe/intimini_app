@@ -1,5 +1,8 @@
 import React from 'react';
 
+// HARD CODED:
+// edited entry text
+
 export default function DisplayEntries (props) {
 	console.log(props);
 	const authUser = props.user.id;
@@ -12,12 +15,21 @@ export default function DisplayEntries (props) {
 		var editButtons;
 		var mood = <p>{entry.mood}</p>
 		var date = <p>{entry.date}</p>
-		var content = <p>{entry.entry}</p>
+		let content = <p>{entry.entry}</p>
 		if (entriesArray.length === 1) {
+			content = <p contentEditable={true}>{entry.entry}</p>
 			editButtons = (
 				<div>
-					<button className="edit-button">Edit</button>
-					<button className="delete-button">Delete</button>
+					<button
+						onClick={props.updateEntry.bind(null, entry.id, "i'm edited wheeeeeee!")}
+						className="save-button">
+							Save edits
+					</button>
+					<button
+						onClick={props.deleteEntry.bind(null, entry.id)}
+						className="delete-button">
+							Delete
+					</button>
 				</div>
 			)
 		} else {
@@ -25,7 +37,7 @@ export default function DisplayEntries (props) {
 		}
 		return (
 			<div
-				onClick={props.selectEntry.bind(null, entry.id)}
+				onDoubleClick={props.selectEntry.bind(null, entry.id)}
 				className="journal-entry"
 				key={idx}
 				id={entry.id}
