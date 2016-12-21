@@ -50,7 +50,7 @@ const usersReducer = (state = [], action) => {
 				var username = user.username, password = user.username, id = user.id
 				return {
 					username: user.username,
-					password: user.username,
+					password: user.password,
 					id: user.id,
 					loggedIn: false
 				}
@@ -65,10 +65,11 @@ const usersReducer = (state = [], action) => {
 				usersList: action.userInfo,
 			};
 		case actions.TOGGLE_LOG_IN:
-			var userToUpdate = state.usersList.users.filter((user) => {
+			var userToUpdate = state.usersList.filter((user) => {
 				return (user.id === action.userId)
 			});
-			const newUsers = immutableSplice(state.usersList.users, 3, 1, userToUpdate)
+			userToUpdate = {...userToUpdate[0], loggedIn: true}
+			const newUsers = immutableSplice(state.usersList, 3, 1, userToUpdate)
 			return {
 				...state,
 				usersList: newUsers

@@ -19,6 +19,15 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.toggleLogIn(4));
 	}
 
+	anyoneHome (users) {
+		for (var i = 0; i < users.length; i++) {
+			if (users[i].loggedIn) {
+				return users[i];
+			}
+		}
+		return false;
+}
+
 	render () {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
@@ -37,8 +46,9 @@ class LoginContainer extends React.Component {
 			return entry
 		})
 
-		if (users.length > 1 && entries.length > 1) {
+		if (users.length > 0 && entries.length > 0) {
 			return <DisplayHome
+				isLoggedIn={this.anyoneHome(users)}
 				onClick={this.updateState}
 				usersArray={users}
 				entriesArray={entries}
@@ -46,7 +56,6 @@ class LoginContainer extends React.Component {
 		} else {
 			return <div>Nothing</div>
 		}
-
 	}
 }
 
@@ -55,11 +64,3 @@ const mapStateToProps = (state, props) => ({
 })
 
 export default connect(mapStateToProps)(LoginContainer);
-
-// <Root>
-//   if (props.a && poprs.b && prop.c) {
-//     <MyComponent />
-//   } else {
-//     <h1> still need stuff ... </h1>
-//   }
-// </Root>
