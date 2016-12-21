@@ -12,11 +12,10 @@
         create table if not exists entries (
         id serial primary key,
         mood text not null,
-        date integer not null,
+        date date not null,
         entry text not null,
         user_id integer references users  
     );
-
 
 
 backend 
@@ -36,3 +35,18 @@ entry post
 }
 //req object allows duplicates
 //*due not the user_id is pre authentication
+
+entry put
+additonal editing fields can be added
+{
+"id" : 1,
+"mood": "not the"
+}
+
+user put
+username only
+
+{
+"id" : 7,
+ "username": "frog"
+}

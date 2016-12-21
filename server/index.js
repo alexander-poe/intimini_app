@@ -20,84 +20,161 @@ app.use(express.static(process.env.CLIENT_PATH));
 
 app.get('/users', (req, res) => {
     knex('users').select('id', 'username', 'password').then((users) => {
-        return res.json({users});
+        return res.status(200).json({users});
     });
 });
-
-app.get('/entries/u', (req, res) => {
-    knex('entries').select('mood', 'date', 'entry', 'user_id').then((entries) => {
-        return res.json({entries})
+app.get('/entries', (req, res) => {
+    knex('entries').where({user_id: 1}).select('mood', 'date', 'entry').then((entries) => {
+        return res.status(200).json({entries})
     });
 });
-
+//done with error
 app.post('/users', (req, res) => {
     const body = req.body;
-    console.log(body);
-    knex.insert({username: body.username, password: body.password}).into('users').then(id => {
-        console.log(id);
-    })
-    .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
+     if (!body)  {
+        return res.status(400).json({
+            message: 'No request body'
+        })
+    }
+
+    if (body.username === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: username'
+        })
+    }
+
+     if (body.password === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: password'
+        })
+    }
+
+    if (typeof body.username !== 'string') {
+        return res.status(422).json({
+            message: 'Incorrect field type: username'
+        })
+    } 
+
+     if (typeof body.password !== 'string') {
+        return res.status(422).json({
+            message: 'Incorrect field type: password'
+        })
+    } 
+        knex.insert({
+            username: body.username, 
+            password: body.password
+        }).into('users').then(id => {
+            console.log(id);
+            return res.status(201).json({})
+        }).catch(e => {
+            console.error(e); 
+            res.sendStatus(500);
+        })
+    
 })
-
-
 app.post('/entries', (req, res) => {
     const body = req.body;
     console.log(body);
-    knex.insert({mood: body.mood, date: new Date(), entry: body.entry, user_id: body.user_id}).into('entries').then(id => {
-        console.log(id);
-    })
-    .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
-    //better response objects ? status , id
-})
+     if (!body)  {
+        return res.status(400).json({
+            message: 'No request body'
+        })
+    }
 
+    if (body.mood === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: mood'
+        })
+    }
+
+     if (body.entry === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: entry'
+        })
+    }
+
+    if (typeof body.entry !== 'string') {
+        return res.status(422).json({
+            message: 'Incorrect field type: entry'
+        })
+    } 
+
+    else {
+         knex.insert({
+            mood: body.mood, 
+            date: new Date(), 
+            entry: body.entry, 
+            user_id: body.user_id
+        }).into('entries').then(id => {
+            console.log(id);
+            return res.status(201).json({})
+        }).catch(e => {
+            console.error(e); 
+            res.sendStatus(500);
+        })
+    }
+})
+//only updates mood, easily changable 
 app.put('/entries', (req, res) => {
-    knex('entries').where({id: 1}).update({mood:"awesomestAF"}).then(count => {
+    const body = req.body;
+    knex('entries').where({
+        id: 1
+    }).update({
+        mood: body.mood 
+    }).then(count => {
         console.log(count);
+        return res.json({})
+    }).catch(e => {
+        console.error(e); 
+        res.sendStatus(500);
     })
-    .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
 })
-
-
 app.put('/users', (req, res) => {
-    knex('users').where({id: 3}).update({username:"djangoUnchained"}).then(count => {
+    const body = req.body;
+    knex('users').where({
+        id: body.id
+    }).update({
+        username: body.username
+    }).then(count => {
         console.log(count);
+        return res.json({})
+    }).catch(e => {
+        console.error(e); 
+        res.sendStatus(500);
     })
-    .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
 })
-
-
-
-
+//violates foriegn key constraints if user has messages
 app.delete('/users', (req, res) => {
-    knex('users').where({id: 3, username: "dog", password: "im a dog"}).del().then(count => {
+    const body = req.body;
+    knex('users').where({
+        id: body.id
+    }).del().then(count => {
         console.log(count);
+        return res.json({})
+    }).catch(e => {
+        console.error(e); 
+        res.sendStatus(500);
     })
-     .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
 })
-
+//deletes by id
 app.delete('/entries', (req, res) => {
-    knex('entries').where({mood: "zaz", date: "12101201", entry: 'sheet', user_id: 2}).del().then(count => {
-        console.log(count);
+    const body = req.body;
+    if (body.id === null) {
+        return res.status(404).json({
+        message: 'entry not found'
     })
-     .finally(function() {
-        knex.destroy();
-    })
-    return res.json({})
+    } else {
+        knex('entries').where({
+            id: body.id
+        }).del().then(count => {
+            console.log(count);
+            return res.status(200).json({})
+            }).catch(e => {
+            console.error(e); 
+        res.sendStatus(500);
+           
+            })
+        }
 })
 
 
