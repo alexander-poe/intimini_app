@@ -1,9 +1,15 @@
 import React from 'react';
 
 export default function DisplayEntries (props) {
-		console.log(props.entries);
+		const authUser = props.user.id;
+		const entriesArray = props.entries.filter((entry) => {
+			return (entry.user_id === authUser);
+		})
 
-		const eachEntry = props.entries.map((entry, idx) => {
+		console.log(authUser);
+		console.log(entriesArray);
+
+		const eachEntry = entriesArray.map((entry, idx) => {
 			var mood = <p>{entry.mood}</p>
 			var date = <p>{entry.date}</p>
 			var content = <p>{entry.entry}</p>

@@ -18,7 +18,7 @@ export default function DisplayHome (props) {
 	} else {
 		return (
 			<div>
-				<EntriesHeader />
+				<EntriesHeader user={props.isLoggedIn} />
 				<DisplayEntries
 					user={props.isLoggedIn}
 					entries={props.entriesArray}
