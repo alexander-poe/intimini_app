@@ -15,6 +15,7 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
+// ****** USER IS HARD CODED ****** //
 	updateState (event) {
 		this.props.dispatch(actions.toggleLogIn(4));
 	}

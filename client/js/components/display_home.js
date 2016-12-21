@@ -4,8 +4,6 @@ import DisplayEntries from './display_entries';
 
 export default function DisplayHome (props) {
 
-	// console.log('display home', props);
-
 	const isLoggedIn = props.isLoggedIn;
 
 	if (!isLoggedIn) {
