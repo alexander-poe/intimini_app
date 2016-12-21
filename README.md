@@ -19,7 +19,11 @@
 
 
 backend 
-usr post
+#get all entries
+entries/u
+
+
+#usr post
 {
 "username": "yead",
 "password": "futbol"
@@ -27,7 +31,7 @@ usr post
 //req object - cannot have duplicates 
 
 
-entry post
+#entry post
 {
 "mood": "HA",
 "entry": "futbol",
@@ -36,17 +40,27 @@ entry post
 //req object allows duplicates
 //*due not the user_id is pre authentication
 
-entry put
+#entry put
 additonal editing fields can be added
 {
 "id" : 1,
 "mood": "not the"
 }
 
-user put
+#user put
 username only
-
 {
 "id" : 7,
  "username": "frog"
 }
+
+#user delete 
+not an option
+
+#message delete 
+{
+"id" : 3
+
+}
+
+

@@ -1,12 +1,11 @@
 require('babel-polyfill');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+// const bcrypt = require('bcrypt');
+// const passport = require('passport');
+// const BasicStrategy = require('passport-http').BasicStrategy;
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
-
-console.log(`Server running in ${process.env.NODE_ENV} mode`);
-
 const app = express();
 const knex = require('knex')({
   client: 'pg',
@@ -14,21 +13,25 @@ const knex = require('knex')({
     database: 'intimini'
   },
 });
-
 app.use(bodyParser.json());
 app.use(express.static(process.env.CLIENT_PATH));
-
 app.get('/users', (req, res) => {
     knex('users').select('id', 'username', 'password').then((users) => {
         return res.status(200).json({users});
     });
 });
 app.get('/entries', (req, res) => {
+    knex('entries').select('mood', 'date', 'entry').then((entries) => {
+        return res.status(200).json({entries})
+    });
+});
+app.get('/entries/u', (req, res) => {
+    const body = req.body;
+    console.log(body);
     knex('entries').where({user_id: 1}).select('mood', 'date', 'entry').then((entries) => {
         return res.status(200).json({entries})
     });
 });
-//done with error
 app.post('/users', (req, res) => {
     const body = req.body;
      if (!body)  {
@@ -70,7 +73,6 @@ app.post('/users', (req, res) => {
             console.error(e); 
             res.sendStatus(500);
         })
-    
 })
 app.post('/entries', (req, res) => {
     const body = req.body;
@@ -98,25 +100,36 @@ app.post('/entries', (req, res) => {
             message: 'Incorrect field type: entry'
         })
     } 
-
-    else {
-         knex.insert({
-            mood: body.mood, 
-            date: new Date(), 
-            entry: body.entry, 
-            user_id: body.user_id
-        }).into('entries').then(id => {
-            console.log(id);
-            return res.status(201).json({})
-        }).catch(e => {
-            console.error(e); 
-            res.sendStatus(500);
-        })
-    }
+    knex.insert({
+        mood: body.mood, 
+        date: new Date(), 
+        entry: body.entry, 
+        user_id: body.user_id
+    }).into('entries').then(id => {
+        console.log(id);
+        return res.status(201).json({})
+    }).catch(e => {
+        console.error(e); 
+        res.sendStatus(500);
+    })
 })
-//only updates mood, easily changable 
 app.put('/entries', (req, res) => {
     const body = req.body;
+    if (!body)  {
+        return res.status(400).json({
+            message: 'No request body'
+        })
+    }
+    if (body.mood === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: mood'
+        })
+    }
+    if (typeof body.username !== 'string') {
+        return res.status(422).json({
+            message: 'Incorrect field type: mood'
+        })
+    } 
     knex('entries').where({
         id: 1
     }).update({
@@ -143,9 +156,23 @@ app.put('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-//violates foriegn key constraints if user has messages
 app.delete('/users', (req, res) => {
     const body = req.body;
+    if (!body)  {
+        return res.status(400).json({
+            message: 'No request body'
+        })
+    }
+    if (body.id === " ") { 
+        return res.status(422).json({
+            message: 'Missing field: ID'
+        })
+    }
+    if (typeof body.id ===  isNaN) {
+        return res.status(422).json({
+            message: 'Incorrect field type: #'
+        })
+    } 
     knex('users').where({
         id: body.id
     }).del().then(count => {
@@ -156,29 +183,23 @@ app.delete('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-//deletes by id
 app.delete('/entries', (req, res) => {
     const body = req.body;
     if (body.id === null) {
         return res.status(404).json({
         message: 'entry not found'
     })
-    } else {
-        knex('entries').where({
-            id: body.id
+    knex('entries').where({
+        id: body.id
         }).del().then(count => {
-            console.log(count);
-            return res.status(200).json({})
-            }).catch(e => {
-            console.error(e); 
-        res.sendStatus(500);
-           
-            })
-        }
+        console.log(count);
+        return res.status(200).json({})
+        }).catch(e => {
+        console.error(e); 
+        res.sendStatus(500);   
+        })
+    }
 })
-
-
-
 function runServer() {
     return new Promise((resolve, reject) => {
         app.listen(PORT, HOST, (err) => {
@@ -186,13 +207,12 @@ function runServer() {
                 console.error(err);
                 reject(err);
             }
-
             const host = HOST || 'localhost';
             console.log(`Listening on ${host}:${PORT}`);
         });
     });
 }
-
 if (require.main === module) {
     runServer();
 }
+
