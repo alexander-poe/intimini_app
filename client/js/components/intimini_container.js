@@ -8,7 +8,6 @@ class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.logInUser = this.logInUser.bind(this);
-		this.deleteEntry = this.deleteEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -33,10 +32,6 @@ class LoginContainer extends React.Component {
 
 // ENTRIES
 
-	deleteEntry (event) {
-		this.props.dispatch(actions.deleteEntry(entryId));
-	}
-
 	render () {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
@@ -60,7 +55,6 @@ class LoginContainer extends React.Component {
 			return <DisplayHome
 				isLoggedIn={this.anyoneHome(users)}
 				logInUser={this.logInUser}
-				deleteEntry={this.deleteEntry}
 				usersArray={users}
 				entriesArray={entries}
 			/>

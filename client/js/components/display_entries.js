@@ -11,7 +11,11 @@ export default function DisplayEntries (props) {
 			var date = <p>{entry.date}</p>
 			var content = <p>{entry.entry}</p>
 			return (
-				<form className="journal-entry" key={idx} id={entry.id}>
+				<div
+					className="journal-entry"
+					key={idx}
+					id={entry.id}
+					>
 					<ul>
 						<li>{mood}</li>
 						<li>{content}</li>
@@ -19,10 +23,10 @@ export default function DisplayEntries (props) {
 							<button onClick="edit">Edit</button>
 						</li>
 						<li>
-							<button onClick={props.deleteEntry}>Delete</button>
+							<button onClick={console.log('Clicked delete')}>Delete</button>
 						</li>
 					</ul>
-				</form>
+				</div>
 			)
 		})
 

@@ -18,7 +18,6 @@ export default function DisplayHome (props) {
 			<div>
 				<EntriesHeader user={props.isLoggedIn} />
 				<DisplayEntries
-					deleteEntry={props.deleteEntry}
 					user={props.isLoggedIn}
 					entries={props.entriesArray}
 				/>;
