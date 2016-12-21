@@ -19,6 +19,12 @@ export default function DisplayEntries (props) {
 						<li>{mood}</li>
 						<li>{date}</li>
 						<li>{content}</li>
+						<li>
+							<button onClick="edit">Edit</button>
+						</li>
+						<li>
+							<button onClick="delete">Delete</button>
+						</li>
 					</ul>
 				</div>
 			)
