@@ -38,9 +38,9 @@ app.get('/entries/u', (req, res) => {
     });
 });
 // make this a variable endpoint?
-app.get('/entries/user_entries', (req, res) => {
-    knex('entries').where({user_id: req.params.user_entries}).select('mood', 'date', 'entry').then((entries) => {
-        return res.status(200).json({entries})
+app.get('/entries/:entry', (req, res) => {
+    knex('entries').where({id: req.params.entry}).select('id', 'mood', 'date', 'entry', 'user_id').then((entry) => {
+        return res.status(200).json({entry})
     });
 });
 // POST

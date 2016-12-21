@@ -11,24 +11,23 @@ export const toggleLogIn = userId => ({
 
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const getUserSuccess = userInfo => ({
-    type: GET_USER_SUCCESS,
-   	userInfo,
-		loggedIn: false
+  type: GET_USER_SUCCESS,
+ 	userInfo,
+	loggedIn: false
 });
 
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const deleteUserSuccess = userInfo => ({
-    type: DELETE_USER_SUCCESS,
-   	userInfo
+  type: DELETE_USER_SUCCESS,
+ 	userInfo
 });
 
 // SYNC // ENTRIES
 
 export const GET_ENTRIES_SUCCESS = 'GET_ENTRIES_SUCCESS';
 export const getEntriesSuccess = entriesInfo => ({
-    type: GET_ENTRIES_SUCCESS,
-   	entriesInfo,
-		visible: false
+	type: GET_ENTRIES_SUCCESS,
+	entriesInfo
 });
 
 export const DELETE_ENTRY_SUCCESS = 'DELETE_ENTRY_SUCCESS';
@@ -39,39 +38,40 @@ export const deleteEntrySuccess = entryInfo => ({
 
 // ASYNC // ENTRIES
 
-export const getEntries = () => dispatch => {
-	return fetch(entries_url)
+export const getEntries = (id = '') => dispatch => {
+	return fetch(entries_url + '/' + id)
 		.then(res => {
 			if(!res.ok) {
 				throw new Error(res.statusText);
 			}
 			return res.json()
 		}).then(res => {
+			console.log('actions', res);
 			dispatch(getEntriesSuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
 		});
 }
 
-export const deleteEntry = (id) => dispatch => {
-	return fetch(entries_url,
-		{
-			method: "DELETE",
-			body: JSON.stringify({cheese: userSelection}),
-			headers: {"Content-Type": "application/json"}
-		}
-	)
-		.then(res => {
-			if(!res.ok) {
-				throw new Error(res.statusText);
-			}
-			return res.json()
-		}).then(res => {
-			dispatch(deleteEntrySuccess(res));
-		}).catch(err => {
-			console.log('error:', err);
-		})
-}
+// export const deleteEntry = (id) => dispatch => {
+// 	return fetch(entries_url,
+// 		{
+// 			method: "DELETE",
+// 			body: JSON.stringify({cheese: userSelection}),
+// 			headers: {"Content-Type": "application/json"}
+// 		}
+// 	)
+// 		.then(res => {
+// 			if(!res.ok) {
+// 				throw new Error(res.statusText);
+// 			}
+// 			return res.json()
+// 		}).then(res => {
+// 			dispatch(deleteEntrySuccess(res));
+// 		}).catch(err => {
+// 			console.log('error:', err);
+// 		})
+// }
 
 // ASYNC // USERS
 

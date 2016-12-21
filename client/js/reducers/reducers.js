@@ -82,10 +82,20 @@ const usersReducer = (state = [], action) => {
 const entriesReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_ENTRIES_SUCCESS:
+			console.log('reducers', action.entriesInfo);
 			return {
 				...state,
 				entriesList: action.entriesInfo
 			};
+		default:
+			return state;
+	}
+}
+
+const entrySelector = (state = '', action) => {
+	switch (action.type) {
+		case actions.GET_ENTRY:
+			console.log(action.entryId)
 		default:
 			return state;
 	}

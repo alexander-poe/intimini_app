@@ -11,6 +11,7 @@ class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.logInUser = this.logInUser.bind(this);
+		this.selectEntry = this.selectEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -36,7 +37,7 @@ class LoginContainer extends React.Component {
 // ENTRIES
 
 selectEntry (id) {
-	this.props.dispatch(actions.getSingleEntry(id));
+	this.props.dispatch(actions.getEntries(id));
 }
 
 	render () {
@@ -45,17 +46,26 @@ selectEntry (id) {
 		const stateEntries = this.props.store.entriesReducer.entriesList;
 		let users, entries;
 
+		console.log('get entries', stateEntries);
+
 		!stateUsers ?
 		users = '' :
 		users = stateUsers.map((user, idx) => {
 			return user;
 		})
 
-		!stateEntries ?
-		entries = '' :
-		entries = stateEntries.entries.map((entry, idx) => {
-			return entry;
-		})
+		if (!stateEntries) {
+			entries = '';
+		// } else if (!stateEntries.entries) {
+		// 	entries = '';
+	} else if (stateEntries.entry) {
+			entries = stateEntries.entry[0];
+		} else {
+			entries = stateEntries.entries.map((entry, idx) => {
+				return entry;
+			});
+		}
+
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
