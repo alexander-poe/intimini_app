@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
-import DisplayHome from './display_home';
+import EntriesHeader from './entries_header';
+import DisplayEntries from './display_entries';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
@@ -50,15 +51,25 @@ class LoginContainer extends React.Component {
 			return entry
 		})
 
-		if (users.length > 0 && entries.length > 0) {
-			debugger;
-			return <DisplayHome
-				isLoggedIn={this.anyoneHome(users)}
-				logInUser={this.logInUser}
-				usersArray={users}
-				entriesArray={entries}
-			/>
-		} else {
+	if (this.anyoneHome(users)) {
+		var isLoggedIn = this.anyoneHome(users);
+		return (
+			<div>
+				<EntriesHeader user={isLoggedIn} />
+				<DisplayEntries
+					user={isLoggedIn}
+					entries={entries}
+				/>;
+			</div>
+		)
+	} else if (users.length > 0 && entries.length > 0) {
+		return (
+			<div className="welcome">
+				<h2>Welcome to Intimini</h2>
+				<button onClick={this.logInUser}>Come on in!</button>
+			</div>
+		)
+	} else {
 			return <h4>There was an error accessing the server. Please try again in a moment.</h4>
 		}
 	}

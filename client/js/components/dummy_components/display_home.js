@@ -25,3 +25,12 @@ export default function DisplayHome (props) {
 		)
 	}
 }
+
+
+debugger;
+return <DisplayHome
+
+	logInUser={this.logInUser}
+	usersArray={users}
+	entriesArray={entries}
+/>

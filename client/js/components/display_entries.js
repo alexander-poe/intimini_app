@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function DisplayEntries (props) {
+	console.log(props);
 		const authUser = props.user.id;
 		const entriesArray = props.entries.filter((entry) => {
 			return (entry.user_id === authUser);
