@@ -4,6 +4,8 @@ import * as actions from '../actions/actions';
 
 import EntriesHeader from './entries_header';
 import DisplayEntries from './display_entries';
+import Welcome from './welcome';
+import ErrorDisplay from './error_display';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
@@ -33,6 +35,10 @@ class LoginContainer extends React.Component {
 
 // ENTRIES
 
+selectEntry (id) {
+	this.props.dispatch(actions.getSingleEntry(id));
+}
+
 	render () {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
@@ -42,13 +48,13 @@ class LoginContainer extends React.Component {
 		!stateUsers ?
 		users = '' :
 		users = stateUsers.map((user, idx) => {
-			return user
+			return user;
 		})
 
 		!stateEntries ?
 		entries = '' :
 		entries = stateEntries.entries.map((entry, idx) => {
-			return entry
+			return entry;
 		})
 
 	if (this.anyoneHome(users)) {
@@ -59,24 +65,24 @@ class LoginContainer extends React.Component {
 				<DisplayEntries
 					user={isLoggedIn}
 					entries={entries}
+					selectEntry={this.selectEntry}
 				/>;
 			</div>
 		)
 	} else if (users.length > 0 && entries.length > 0) {
-		return (
-			<div className="welcome">
-				<h2>Welcome to Intimini</h2>
-				<button onClick={this.logInUser}>Come on in!</button>
-			</div>
-		)
+			return (
+				<Welcome logInUser={this.logInUser} />
+			)
 	} else {
-			return <h4>There was an error accessing the server. Please try again in a moment.</h4>
+			return (
+				<ErrorDisplay />
+			)
 		}
 	}
 }
 
 const mapStateToProps = (state, props) => ({
 	store: state
-})
+});
 
 export default connect(mapStateToProps)(LoginContainer);

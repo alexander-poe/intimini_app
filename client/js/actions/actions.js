@@ -50,7 +50,7 @@ export const getEntries = () => dispatch => {
 			dispatch(getEntriesSuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
-		})
+		});
 }
 
 export const deleteEntry = (id) => dispatch => {

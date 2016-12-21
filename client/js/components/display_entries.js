@@ -13,6 +13,7 @@ export default function DisplayEntries (props) {
 			var content = <p>{entry.entry}</p>
 			return (
 				<div
+					onClick={props.selectEntry.bind(null, entry.id)}
 					className="journal-entry"
 					key={idx}
 					id={entry.id}
@@ -20,18 +21,12 @@ export default function DisplayEntries (props) {
 					<ul>
 						<li>{mood}</li>
 						<li>{content}</li>
-						<li>
-							<button onClick="edit">Edit</button>
-						</li>
-						<li>
-							<button onClick={console.log('Clicked delete')}>Delete</button>
-						</li>
 					</ul>
 				</div>
-			)
-		})
+			);
+		});
 
 		return (
 			<div>{eachEntry}</div>
-		)
+		);
 }

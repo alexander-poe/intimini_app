@@ -17,12 +17,12 @@ app.use(bodyParser.json());
 // added so page will load :)
 app.use(express.static(process.env.CLIENT_PATH));
 
+// GET
 app.get('/users', (req, res) => {
     knex('users').select('id', 'username', 'password').then((users) => {
         return res.status(200).json({users});
     });
 });
-
 // changed this so it returns all info about each entry
 app.get('/entries', (req, res) => {
     knex('entries').select('id', 'mood', 'date', 'entry', 'user_id')
@@ -37,6 +37,13 @@ app.get('/entries/u', (req, res) => {
         return res.status(200).json({entries})
     });
 });
+// make this a variable endpoint?
+app.get('/entries/user_entries', (req, res) => {
+    knex('entries').where({user_id: req.params.user_entries}).select('mood', 'date', 'entry').then((entries) => {
+        return res.status(200).json({entries})
+    });
+});
+// POST
 app.post('/users', (req, res) => {
     const body = req.body;
      if (!body)  {
@@ -116,6 +123,7 @@ app.post('/entries', (req, res) => {
         res.sendStatus(500);
     })
 })
+// PUT
 app.put('/entries', (req, res) => {
     const body = req.body;
     if (!body)  {
@@ -159,6 +167,7 @@ app.put('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
+// DELETE
 app.delete('/users', (req, res) => {
     const body = req.body;
     if (!body)  {
@@ -186,15 +195,15 @@ app.delete('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.delete('/entries', (req, res) => {
-	console.log(req.body.id);
-    const body = req.body;
-    if (body.id === null) {
+app.delete('/entries/:entry_id', (req, res) => {
+    console.log(req.params.entry_id);
+    if (req.params.entry_id === null) {
         return res.status(404).json({
         message: 'entry not found'
-    })
+        })
+    }
     knex('entries').where({
-        id: body.id
+        id: req.params.entry_id
         }).del().then(count => {
         console.log(count);
         return res.status(200).json({})
@@ -202,7 +211,7 @@ app.delete('/entries', (req, res) => {
         console.error(e);
         res.sendStatus(500);
         })
-    }
+
 })
 function runServer() {
     return new Promise((resolve, reject) => {
