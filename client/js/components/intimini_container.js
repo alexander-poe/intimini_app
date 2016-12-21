@@ -48,7 +48,6 @@ class LoginContainer extends React.Component {
 	}
 
 	postNewEntry (text) {
-		console.log(text);
 		this.props.dispatch(actions.postNewEntry(text));
 	}
 
