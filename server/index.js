@@ -87,7 +87,7 @@ app.post('/users', (req, res) => {
 })
 app.post('/entries', (req, res) => {
     const body = req.body;
-    console.log(body);
+    console.log('entry post body', body);
      if (!body)  {
         return res.status(400).json({
             message: 'No request body'
@@ -98,13 +98,11 @@ app.post('/entries', (req, res) => {
             message: 'Missing field: mood'
         })
     }
-
      if (body.entry === " ") {
         return res.status(422).json({
             message: 'Missing field: entry'
         })
     }
-
     if (typeof body.entry !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: entry'

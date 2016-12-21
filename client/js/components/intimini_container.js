@@ -6,12 +6,14 @@ import EntriesHeader from './entries_header';
 import DisplayEntries from './display_entries';
 import Welcome from './welcome';
 import ErrorDisplay from './error_display';
+import NewEntry from './new_entry';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.logInUser = this.logInUser.bind(this);
 		this.selectEntry = this.selectEntry.bind(this);
+		this.postNewEntry = this.postNewEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -36,9 +38,13 @@ class LoginContainer extends React.Component {
 
 // ENTRIES
 
-selectEntry (id) {
-	this.props.dispatch(actions.getEntries(id));
-}
+	selectEntry (id) {
+		this.props.dispatch(actions.getEntries(id));
+	}
+
+	postNewEntry (text) {
+		this.props.dispatch(actions.postNewEntry(text));
+	}
 
 	render () {
 
@@ -72,6 +78,7 @@ selectEntry (id) {
 		return (
 			<div>
 				<EntriesHeader user={isLoggedIn} />
+				<NewEntry postNewEntry={this.postNewEntry} />
 				<DisplayEntries
 					user={isLoggedIn}
 					entries={entries}

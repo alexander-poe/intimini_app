@@ -53,6 +53,31 @@ export const getEntries = (id = '') => dispatch => {
 		});
 }
 
+export const postNewEntry = (text) => dispatch => {
+	console.log('actions.js arg', text);
+	return fetch(entries_url,
+		{
+			method: "POST",
+			body: JSON.stringify({
+				mood: "happy",
+				entry: text,
+				user_id: 4
+			}),
+			headers: {"Content-Type": "application/json"}
+		}
+	)
+		.then(res => {
+			if (!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res;
+		}).then(res => {
+			console.log('actions.js', res);
+		}).catch(err => {
+			console.log('error:', err);
+		});
+}
+
 // export const deleteEntry = (id) => dispatch => {
 // 	return fetch(entries_url,
 // 		{
