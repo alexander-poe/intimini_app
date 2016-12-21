@@ -22,13 +22,19 @@ export const deleteUserSuccess = userInfo => ({
    	userInfo
 });
 
-// SYNC // USERS
+// SYNC // ENTRIES
 
 export const GET_ENTRIES_SUCCESS = 'GET_ENTRIES_SUCCESS';
 export const getEntriesSuccess = entriesInfo => ({
     type: GET_ENTRIES_SUCCESS,
    	entriesInfo,
 		visible: false
+});
+
+export const DELETE_ENTRY_SUCCESS = 'DELETE_ENTRY_SUCCESS';
+export const deleteEntrySuccess = entryInfo => ({
+	type: DELETE_ENTRY_SUCCESS,
+	entryInfo
 });
 
 // ASYNC // ENTRIES
@@ -42,6 +48,26 @@ export const getEntries = () => dispatch => {
 			return res.json()
 		}).then(res => {
 			dispatch(getEntriesSuccess(res));
+		}).catch(err => {
+			console.log('error:', err);
+		})
+}
+
+export const deleteEntry = (id) => dispatch => {
+	return fetch(entries_url,
+		{
+			method: "DELETE",
+			body: JSON.stringify({cheese: userSelection}),
+			headers: {"Content-Type": "application/json"}
+		}
+	)
+		.then(res => {
+			if(!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json()
+		}).then(res => {
+			dispatch(deleteEntrySuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
 		})

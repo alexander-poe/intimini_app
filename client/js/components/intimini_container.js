@@ -7,7 +7,8 @@ import DisplayHome from './display_home';
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.updateState = this.updateState.bind(this);
+		this.logInUser = this.logInUser.bind(this);
+		this.deleteEntry = this.deleteEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -15,7 +16,9 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
-	updateState (event) {
+// USERS
+
+	logInUser (event) {
 		this.props.dispatch(actions.toggleLogIn(4));
 	}
 
@@ -26,7 +29,13 @@ class LoginContainer extends React.Component {
 			}
 		}
 		return false;
-}
+	}
+
+// ENTRIES
+
+	deleteEntry (event) {
+		this.props.dispatch(actions.deleteEntry(entryId));
+	}
 
 	render () {
 
@@ -47,14 +56,16 @@ class LoginContainer extends React.Component {
 		})
 
 		if (users.length > 0 && entries.length > 0) {
+			debugger;
 			return <DisplayHome
 				isLoggedIn={this.anyoneHome(users)}
-				onClick={this.updateState}
+				logInUser={this.logInUser}
+				deleteEntry={this.deleteEntry}
 				usersArray={users}
 				entriesArray={entries}
 			/>
 		} else {
-			return <div>Nothing</div>
+			return <h4>There was an error accessing the server. Please try again in a moment.</h4>
 		}
 	}
 }

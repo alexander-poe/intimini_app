@@ -6,27 +6,23 @@ export default function DisplayEntries (props) {
 			return (entry.user_id === authUser);
 		})
 
-		console.log(authUser);
-		console.log(entriesArray);
-
 		const eachEntry = entriesArray.map((entry, idx) => {
 			var mood = <p>{entry.mood}</p>
 			var date = <p>{entry.date}</p>
 			var content = <p>{entry.entry}</p>
 			return (
-				<div className="entry" key={idx}>
+				<form className="journal-entry" key={idx} id={entry.id}>
 					<ul>
 						<li>{mood}</li>
-						<li>{date}</li>
 						<li>{content}</li>
 						<li>
 							<button onClick="edit">Edit</button>
 						</li>
 						<li>
-							<button onClick="delete">Delete</button>
+							<button onClick={props.deleteEntry}>Delete</button>
 						</li>
 					</ul>
-				</div>
+				</form>
 			)
 		})
 

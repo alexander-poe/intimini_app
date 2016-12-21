@@ -4,15 +4,13 @@ import DisplayEntries from './display_entries';
 
 export default function DisplayHome (props) {
 
-	// console.log('display home', props);
-
 	const isLoggedIn = props.isLoggedIn;
 
 	if (!isLoggedIn) {
 		return (
-			<div>
+			<div className="welcome">
 				<h2>Welcome to Intimini</h2>
-				<button onClick={props.onClick}>Come on in!</button>
+				<button onClick={props.logInUser}>Come on in!</button>
 			</div>
 		)
 	} else {
@@ -20,6 +18,7 @@ export default function DisplayHome (props) {
 			<div>
 				<EntriesHeader user={props.isLoggedIn} />
 				<DisplayEntries
+					deleteEntry={props.deleteEntry}
 					user={props.isLoggedIn}
 					entries={props.entriesArray}
 				/>;
