@@ -44,7 +44,7 @@ selectEntry (id) {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries;
+		let users, entries = [];
 
 		console.log('get entries', stateEntries);
 
@@ -59,7 +59,7 @@ selectEntry (id) {
 		// } else if (!stateEntries.entries) {
 		// 	entries = '';
 	} else if (stateEntries.entry) {
-			entries = stateEntries.entry[0];
+			entries.push(stateEntries.entry[0]);
 		} else {
 			entries = stateEntries.entries.map((entry, idx) => {
 				return entry;

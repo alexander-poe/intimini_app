@@ -3,15 +3,13 @@ import React from 'react';
 export default function DisplayEntries (props) {
 	console.log(props);
 		const authUser = props.user.id;
-		let entriesArray;
 
-		if (props.entries.length < 1) {
-			let entry = props.entries;
-		} else {
+		// if (typeof props.entries.length === 1) {
+		// 	let entry = props.entries;
+		// } else {
 			const entriesArray = props.entries.filter((entry) => {
 				return (entry.user_id === authUser);
 			})
-
 			const eachEntry = entriesArray.map((entry, idx) => {
 				var mood = <p>{entry.mood}</p>
 				var date = <p>{entry.date}</p>
@@ -35,5 +33,5 @@ export default function DisplayEntries (props) {
 				<div>{eachEntry}</div>
 			);
 
-		}
+		// }
 }
