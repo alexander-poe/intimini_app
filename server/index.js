@@ -1,10 +1,10 @@
 require('babel-polyfill');
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
-
 const app = express();
 const knex = require('knex')({
   client: 'pg',
@@ -13,27 +13,37 @@ const knex = require('knex')({
   },
 });
 app.use(bodyParser.json());
-
-// added so page will load :)
 app.use(express.static(process.env.CLIENT_PATH));
-
-app.get('/users', (req, res) => {
+const strategy = new BasicStrategy(function(username, password, callback) {
+    knex('users').where({
+        username: 'alex'
+    }).select('username').then((user) => {
+    if (true) {
+        return callback(null, {
+            "user": "Joe", 
+            "message": "hi"
+        });
+    } else {
+        return callback(null, false , {
+            message: 'Incorrect username.'
+        });
+    }
+  });  
+});
+passport.use(strategy);
+app.get('/users', passport.authenticate('basic', {session: false}), (req, res) => {
     knex('users').select('id', 'username', 'password').then((users) => {
         return res.status(200).json({users});
     });
 });
-
-// changed this so it returns all info about each entry
-app.get('/entries', (req, res) => {
+app.get('/entries', passport.authenticate('basic', {session: false}), (req, res) => {   //for dev only
     knex('entries').select('id', 'mood', 'date', 'entry', 'user_id')
 			.then((entries) => {
       	return res.json({entries})
     });
 });
-app.get('/entries/user_entries', (req, res) => {
-    const body = req.body;
-    console.log(body);
-    knex('entries').where({user_id: 1}).select('mood', 'date', 'entry').then((entries) => {
+app.get('/entries/:user_entries', (req, res) => {
+    knex('entries').where({user_id: req.params.user_entries}).select('mood', 'date', 'entry').then((entries) => {
         return res.status(200).json({entries})
     });
 });
@@ -78,7 +88,7 @@ app.post('/users', (req, res) => {
             res.sendStatus(500);
         })
 })
-app.post('/entries', (req, res) => {
+app.post('/entries', passport.authenticate('basic', {session: false}), (req, res) => {
     const body = req.body;
     console.log(body);
      if (!body)  {
@@ -116,7 +126,7 @@ app.post('/entries', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.put('/entries', (req, res) => {
+app.put('/entries', passport.authenticate('basic', {session: false}), (req, res) => {
     const body = req.body;
     if (!body)  {
         return res.status(400).json({
@@ -145,7 +155,7 @@ app.put('/entries', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.put('/users', (req, res) => {
+app.put('/users', passport.authenticate('basic', {session: false}), (req, res) => {
     const body = req.body;
     knex('users').where({
         id: body.id
@@ -159,7 +169,7 @@ app.put('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.delete('/users', (req, res) => {
+app.delete('/users', passport.authenticate('basic', {session: false}), (req, res) => {
     const body = req.body;
     if (!body)  {
         return res.status(400).json({
@@ -186,7 +196,7 @@ app.delete('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.delete('/entries/:entry_id', (req, res) => {
+app.delete('/entries/:entry_id', passport.authenticate('basic', {session: false}), (req, res) => {
 	console.log(req.params.entry_id);
     if (req.params.entry_id === null) {
         return res.status(404).json({
