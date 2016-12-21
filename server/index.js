@@ -30,7 +30,7 @@ app.get('/entries', (req, res) => {
       	return res.json({entries})
     });
 });
-app.get('/entries/u', (req, res) => {
+app.get('/entries/user_entries', (req, res) => {
     const body = req.body;
     console.log(body);
     knex('entries').where({user_id: 1}).select('mood', 'date', 'entry').then((entries) => {
@@ -186,15 +186,15 @@ app.delete('/users', (req, res) => {
         res.sendStatus(500);
     })
 })
-app.delete('/entries', (req, res) => {
-	console.log(req.body.id);
-    const body = req.body;
-    if (body.id === null) {
+app.delete('/entries/:entry_id', (req, res) => {
+	console.log(req.params.entry_id);
+    if (req.params.entry_id === null) {
         return res.status(404).json({
         message: 'entry not found'
-    })
+        })
+    }
     knex('entries').where({
-        id: body.id
+        id: req.params.entry_id
         }).del().then(count => {
         console.log(count);
         return res.status(200).json({})
@@ -202,7 +202,7 @@ app.delete('/entries', (req, res) => {
         console.error(e);
         res.sendStatus(500);
         })
-    }
+    
 })
 function runServer() {
     return new Promise((resolve, reject) => {
