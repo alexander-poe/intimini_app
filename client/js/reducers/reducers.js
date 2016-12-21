@@ -39,18 +39,40 @@ import { combineReducers } from 'redux';
 // 	]
 // };
 
+function immutableSplice(arr, start, deleteCount, ...items) {
+	return [ ...arr.slice(0, start), ...items, ...arr.slice(start + deleteCount) ]
+}
+
 const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_USER_SUCCESS:
+			var userArray = action.userInfo.users.map((user) => {
+				var username = user.username, password = user.username, id = user.id
+				return {
+					username: user.username,
+					password: user.username,
+					id: user.id,
+					loggedIn: false
+				}
+			})
 			return {
 				...state,
-				usersList: action.userInfo,
+				usersList: userArray
 			};
 		case actions.DELETE_USER_SUCCESS:
 			return {
 				...state,
 				usersList: action.userInfo,
 			};
+		case actions.TOGGLE_LOG_IN:
+			var userToUpdate = state.usersList.users.filter((user) => {
+				return (user.id === action.userId)
+			});
+			const newUsers = immutableSplice(state.usersList.users, 3, 1, userToUpdate)
+			return {
+				...state,
+				usersList: newUsers
+			}
 		default:
 			return state;
 	}

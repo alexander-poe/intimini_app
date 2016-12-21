@@ -3,14 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import WelcomePage from './components/welcome_page';
-import HomePage from './components/home_page';
-import IntiminiContainer from './components/intimini_home';
+import WelcomePage from './components/dummy_components/welcome_page';
+import IntiminiContainer from './components/intimini_container';
 
 document.addEventListener('DOMContentLoaded', () => {
 	return ReactDOM.render(
 		<Provider store={store}>
-			<WelcomePage />
+			<IntiminiContainer />
 		</Provider>,
 		document.getElementById('root')
 	);

@@ -3,12 +3,17 @@ const entries_url = "http://localhost:8080/entries";
 
 // SYNC // USERS
 
+export const TOGGLE_LOG_IN = 'TOGGLE_LOG_IN';
+export const toggleLogIn = userId => ({
+	type: TOGGLE_LOG_IN,
+	userId
+})
+
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const getUserSuccess = userInfo => ({
     type: GET_USER_SUCCESS,
    	userInfo,
-		loggedIn: false,
-		visible: false
+		loggedIn: false
 });
 
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
