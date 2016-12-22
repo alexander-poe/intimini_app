@@ -13,11 +13,6 @@ import NewEntry from './new_entry';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
-<<<<<<< HEAD
-		console.log('SANITY CHECK!!!!!!!!!!!!!!!!!!!!!!');
-=======
-		console.log(props);
->>>>>>> merge-branch
 		super(props);
 		this.selectEntry = this.selectEntry.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
@@ -62,8 +57,9 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
-	updateEntry (id, text) {
-		this.props.dispatch(actions.updateEntry(id, text));
+	updateEntry (text) {
+		console.log('intimini', text);
+		// this.props.dispatch(actions.updateEntry(id, text));
 	}
 
 	render () {
