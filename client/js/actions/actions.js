@@ -45,8 +45,7 @@ export const deleteEntrySuccess = entryInfo => ({
 export const SELECT_ENTRY = 'SELECT_ENTRY';
 export const selectEntry = id => ({
 	type: SELECT_ENTRY,
-	id,
-	selected: true
+	id
 })
 
 // ASYNC // ENTRIES

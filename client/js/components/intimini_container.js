@@ -45,7 +45,7 @@ class LoginContainer extends React.Component {
 
 	selectAndUpdate (id, mood, selected, entry) {
 		this.showNewEntry();
-		// this.props.dispatch(actions.selectAndUpdate(id, mood, selected, entry));
+		this.props.dispatch(actions.selectEntry(id));
 	}
 
 	postNewEntry (text, mood) {
@@ -65,7 +65,8 @@ class LoginContainer extends React.Component {
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
 		let users, entries = [], filteredEntry = '';
-		let selectedId = 7;
+		// let selectedId = 7;
+		let selectedId = this.props.store.selectedEntryReducer.selectedEntryId;
 
 		!stateUsers ?
 		users = '' :

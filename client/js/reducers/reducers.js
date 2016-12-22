@@ -16,6 +16,18 @@ const showReducer = (state = true, action) => {
 	}
 }
 
+const selectedEntryReducer = (state = '', action) => {
+	switch (action.type) {
+		case actions.SELECT_ENTRY:
+			console.log('selectedEntryReducer', action.id);
+			return {
+				selectedEntryId: action.id
+			}
+		default:
+			return state;
+	}
+}
+
 const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_USER_SUCCESS:
@@ -59,16 +71,6 @@ const entriesReducer = (state = [], action) => {
 				...state,
 				entriesList: action.entriesInfo
 			};
-		case actions.SELECT_ENTRY:
-			console.log(action.selected);
-			var index = state.entriesList.entries.findIndex((entry) => {
-				return entry.id === action.id
-			});
-			var toEdit = state.entriesList.entries[index];
-			console.log(toEdit);
-			toEdit = Object.assign( {}, { ...toEdit }, { selected: action.selected })
-			console.log(toEdit);
-			return state;
 		default:
 			return state;
 	}
@@ -85,6 +87,7 @@ const entrySelector = (state = '', action) => {
 
 export default combineReducers({
 	showReducer,
+	selectedEntryReducer,
   usersReducer,
   entriesReducer
 });
