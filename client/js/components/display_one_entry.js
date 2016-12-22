@@ -15,10 +15,14 @@ class DisplayOneEntry extends React.Component {
 	render () {
 		const entry = this.props.entries[0];
 		return (
-			<form onSubmit={this.sendAddData}>
+			<form 
+			className="textarea" 
+			onSubmit={this.sendAddData}
+			>
 				<ul>
 					<li>{entry.mood}</li>
 					<li><textarea
+						className="textinput" 
 						rows="10"
 						cols="100"
 						ref={input => this.textInput = input}
