@@ -100,8 +100,22 @@ class LoginContainer extends React.Component {
 						toggleShow={this.toggleShow}
 						selectEntry={this.selectEntry}
 					/>
-						<div className="home"><img src="../assets/home.png" height="21" width="21"/>
-						<img src="../assets/fb.png" height="19" width="19"/></div>
+						<div className="home">
+							<a href="#Top">
+								<img 
+								src="../assets/home.png" 
+								height="21" 
+								width="21"
+								/>
+								</a>
+							<a href="https://www.facebook.com/">
+								<img 
+								src="../assets/fb.png" 
+								height="19" 
+								width="19"
+								/>
+							</a>	
+						</div>
 				</div>
 			)
 		} else {
@@ -115,8 +129,22 @@ class LoginContainer extends React.Component {
 						updateEntry={this.updateEntry}
 						deleteEntry={this.deleteEntry}
 					/>
-						<div className="home"><img src="../assets/home.png" height="21" width="21"/>
-						<img src="../assets/fb.png" height="19" width="19"/></div>
+						<div className="home">
+							<a href="#Top">
+								<img 
+								src="../assets/home.png" 
+								height="21" 
+								width="21"
+								/>
+								</a>
+							<a href="https://www.facebook.com/">
+								<img 
+								src="../assets/fb.png" 
+								height="19" 
+								width="19"
+								/>
+							</a>	
+						</div>
 				</div>
 			)
 		}
