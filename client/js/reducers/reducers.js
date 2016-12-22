@@ -67,7 +67,7 @@ const entriesReducer = (state = [], action) => {
 const entrySelector = (state = '', action) => {
 	switch (action.type) {
 		case actions.GET_ENTRY:
-			console.log(action.entryId)
+			console.log('selected entry', action.entryId);
 		default:
 			return state;
 	}

@@ -51,7 +51,7 @@ export const getEntries = (id = '') => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
-			console.log('actions', res);
+			console.log('get entry success');
 			dispatch(getEntriesSuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
@@ -77,7 +77,7 @@ export const postNewEntry = (text) => dispatch => {
 			}
 			return res;
 		}).then(res => {
-			console.log('actions.js', res);
+			console.log('post entry success');
 		}).catch(err => {
 			console.log('error:', err);
 		});
@@ -99,6 +99,7 @@ export const deleteEntry = (id) => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
+			console.log('delete entry success');
 			dispatch(deleteEntrySuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
@@ -106,7 +107,6 @@ export const deleteEntry = (id) => dispatch => {
 }
 
 export const updateEntry = (id, text) => dispatch => {
-	console.log('actions.js arg', text);
 	return fetch(entries_url,
 		{
 			method: "PUT",
@@ -124,7 +124,7 @@ export const updateEntry = (id, text) => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
-			console.log('updated entry');
+			console.log('update entry success');
 		}).catch(err => {
 			console.log('error:', err);
 		})
@@ -140,6 +140,7 @@ export const getUser = () => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
+			console.log('get user success');
 			dispatch(getUserSuccess(res));
 		}).catch(err => {
 			console.log('error:', err);
@@ -160,7 +161,7 @@ export const deleteUser = () => dispatch => {
 				throw new Error(res.statusText);
 			}
 		}).then(res => {
-			console.log('success');
+			console.log('delete user success');
 		}).catch(err => {
 			console.log('error');
 		})

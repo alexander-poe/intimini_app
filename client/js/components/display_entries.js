@@ -1,8 +1,5 @@
 import React from 'react';
 
-// HARD CODED:
-// edited entry text
-
 export default function DisplayEntries (props) {
 
 		const authUser = props.user.id;

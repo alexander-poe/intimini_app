@@ -3,7 +3,6 @@ import React from 'react';
 export default function EntriesHeader(props) {
 	const changeFilter = (event) => {
 		let filterVal = this.selection.value;
-		console.log(filterVal);
 	}
 
 	return (
