@@ -103,18 +103,22 @@ class LoginContainer extends React.Component {
 				</div>
 			)
 		} else {
-			return (
-				<div>
-					<EntriesHeader user={isLoggedIn} />
-					<DisplayOneEntry
-						user={isLoggedIn}
-						entries={entries}
-						toggleShow={this.toggleShow}
-						updateEntry={this.updateEntry}
-						deleteEntry={this.deleteEntry}
-					/>;
-				</div>
-			)
+			if (entries.length > 1) {
+				this.props.dispatch(actions.getEntries());
+			} else {
+				return (
+					<div>
+						<EntriesHeader user={isLoggedIn} />
+						<DisplayOneEntry
+							user={isLoggedIn}
+							entries={entries}
+							toggleShow={this.toggleShow}
+							updateEntry={this.updateEntry}
+							deleteEntry={this.deleteEntry}
+						/>;
+					</div>
+				)
+			}
 		}
 	} else if (users.length > 0 && entries.length > 0) {
 			return (
