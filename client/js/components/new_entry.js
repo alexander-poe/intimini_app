@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class NewEntry extends React.Component {
+class NewEntry extends React.Component {
 	constructor (props) {
 		super(props);
 		this.sendAddData = this.sendAddData.bind(this);
@@ -9,6 +9,8 @@ export default class NewEntry extends React.Component {
 	sendAddData(e) {
 		e.preventDefault();
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
+		this.textInput.value = '';
+		this.moodInput.value = '';
 	}
 
 	render () {
@@ -37,3 +39,5 @@ export default class NewEntry extends React.Component {
 		)
 	}
 }
+
+export default NewEntry;

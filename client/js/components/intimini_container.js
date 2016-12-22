@@ -15,7 +15,7 @@ import ErrorDisplay from './error_display';
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.selectEntry = this.selectEntry.bind(this);
+		this.selectAndUpdate = this.selectAndUpdate.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
 		this.deleteEntry = this.deleteEntry.bind(this);
 		this.updateEntry = this.updateEntry.bind(this);
@@ -39,14 +39,13 @@ class LoginContainer extends React.Component {
 	}
 
 // ENTRIES
-
 	showNewEntry() {
 		this.props.dispatch(actions.showNewEntry());
 	}
 
-	selectEntry (id) {
+	selectAndUpdate (id, mood, selected, entry) {
 		this.showNewEntry();
-		this.props.dispatch(actions.getEntries(id));
+		this.props.dispatch(actions.selectAndUpdate(id, mood, selected, entry));
 	}
 
 	postNewEntry (text, mood) {
@@ -55,20 +54,17 @@ class LoginContainer extends React.Component {
 
 	deleteEntry (id) {
 		this.props.dispatch(actions.deleteEntry(id));
-		this.props.dispatch(actions.getEntries());
 	}
 
-	updateEntry (id, text) {
-		this.props.dispatch(actions.updateEntry(id, text));
+	updateEntry (id, mood, selected, entry) {
+		this.props.dispatch(actions.updateEntry(id, mood, selected, entry));
 	}
 
 	render () {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries = [];
-
-		console.log('get entries', stateEntries);
+		let users, entries = [], filteredEntries = [];
 
 		!stateUsers ?
 		users = '' :
@@ -78,17 +74,21 @@ class LoginContainer extends React.Component {
 
 		if (!stateEntries) {
 			entries = '';
-	} else if (stateEntries.entry) {
-			entries.push(stateEntries.entry[0]);
 		} else {
 			entries = stateEntries.entries.map((entry, idx) => {
 				return entry;
 			});
+			filteredEntries = stateEntries.entries.filter((entry) => {
+				return (entry.selected === true)
+			});
 		}
 
+		console.log('ENTRIES', entries);
+		console.log('FILTERED', filteredEntries);
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
+		// looking at multiple entries
 		if (this.props.store.showReducer === true) {
 			return (
 				<div>
@@ -98,27 +98,23 @@ class LoginContainer extends React.Component {
 						user={isLoggedIn}
 						entries={entries}
 						toggleShow={this.toggleShow}
-						selectEntry={this.selectEntry}
+						selectAndUpdate={this.selectAndUpdate}
 					/>;
 				</div>
 			)
 		} else {
-			if (entries.length > 1) {
-				this.props.dispatch(actions.getEntries());
-			} else {
-				return (
-					<div>
-						<EntriesHeader user={isLoggedIn} />
-						<DisplayOneEntry
-							user={isLoggedIn}
-							entries={entries}
-							toggleShow={this.toggleShow}
-							updateEntry={this.updateEntry}
-							deleteEntry={this.deleteEntry}
-						/>;
-					</div>
-				)
-			}
+			return (
+				<div>
+					<EntriesHeader user={isLoggedIn} />
+					<DisplayOneEntry
+						user={isLoggedIn}
+						entries={entries}
+						toggleShow={this.toggleShow}
+						selectAndUpdate={this.selectAndUpdate}
+						deleteEntry={this.deleteEntry}
+					/>;
+				</div>
+			)
 		}
 	} else if (users.length > 0 && entries.length > 0) {
 			return (

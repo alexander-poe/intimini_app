@@ -59,6 +59,16 @@ const entriesReducer = (state = [], action) => {
 				...state,
 				entriesList: action.entriesInfo
 			};
+		case actions.SELECT_ENTRY:
+			console.log(action.selected);
+			var index = state.entriesList.entries.findIndex((entry) => {
+				return entry.id === action.id
+			});
+			var toEdit = state.entriesList.entries[index];
+			console.log(toEdit);
+			toEdit = Object.assign( {}, { ...toEdit }, { selected: action.selected })
+			console.log(toEdit);
+			return state;
 		default:
 			return state;
 	}

@@ -20,7 +20,13 @@ class DisplayEntries extends React.Component {
 			return (
 				<div
 					className={classNames}
-					onClick={this.props.selectEntry.bind(null, entry.id)}
+					onClick={this.props.selectAndUpdate.bind(
+						null,
+						entry.id,
+						entry.mood,
+						true,
+						entry.entry
+					)}
 					key={idx}
 					id={entry.id}
 					>
@@ -31,7 +37,6 @@ class DisplayEntries extends React.Component {
 				</div>
 			);
 		});
-
 			return (
 				<div>{eachEntry}</div>
 			)

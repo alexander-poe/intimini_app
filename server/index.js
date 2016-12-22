@@ -24,7 +24,7 @@ app.get('/users', (req, res) => {
     });
 });
 app.get('/entries', (req, res) => {
-    knex('entries').select('id', 'mood', 'date', 'entry', 'user_id')
+    knex('entries').select('id', 'selected', 'mood', 'date', 'entry', 'user_id')
 			.then((entries) => {
       	return res.json({entries})
     });
@@ -37,7 +37,7 @@ app.get('/entries/u', (req, res) => {
     });
 });
 app.get('/entries/:entry', (req, res) => {
-    knex('entries').where({id: req.params.entry}).select('id', 'mood', 'date', 'entry', 'user_id').then((entry) => {
+    knex('entries').where({id: req.params.entry}).select('id', 'selected', 'mood', 'date', 'entry', 'user_id').then((entry) => {
         return res.status(200).json({entry})
     });
 });
@@ -140,9 +140,10 @@ app.put('/entries', (req, res) => {
         })
     }
     knex('entries').where({
-        id: 1
+        id: body.id
     }).update({
         mood: body.mood,
+				selected: body.selected,
 				entry: body.entry
     }).then(count => {
         console.log(count);

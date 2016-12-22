@@ -1,18 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 
 class DisplayOneEntry extends React.Component {
 	constructor (props) {
-		console.log('display one entry', props);
 		super(props);
 		this.sendAddData = this.sendAddData.bind(this);
 	}
 
+	componentDidMount () {
+		this.props.dispatch(actions.getEntries());
+	}
+
 	sendAddData(e) {
 		e.preventDefault();
-		this.props.updateEntry(this.props.entries[0].id, this.textInput.value);
+		this.props.dispatch(actions.updateEntry(
+			this.props.entries[0].id,
+			this.props.entries[0].mood,
+			this.props.entries[0].selected,
+			this.textInput.value));
 	}
 
 	render () {
+		console.log('display one entry', this.props);
 		const entry = this.props.entries[0];
 		return (
 			<form onSubmit={this.sendAddData}>
@@ -37,4 +47,8 @@ class DisplayOneEntry extends React.Component {
 	}
 }
 
-export default DisplayOneEntry;
+const mapStateToProps = (state, props) => ({
+	store: state
+});
+
+export default connect(mapStateToProps)(DisplayOneEntry);
