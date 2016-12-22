@@ -16,7 +16,7 @@ class EntriesHeader extends React.Component {
 		return (
 			<div className="menu-bar">
 				<form>
-					<button className="back-to-top">Back to top</button>
+				
 				</form>
 				<hr />
 				<form onSubmit={this.changeFilter}>

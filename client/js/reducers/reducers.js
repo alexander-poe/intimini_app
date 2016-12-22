@@ -53,13 +53,16 @@ const usersReducer = (state = [], action) => {
 }
 
 const entriesReducer = (state = [], action) => {
+	console.log(action.type)
 	switch (action.type) {
 		case actions.GET_ENTRIES_SUCCESS:
+			console.log('returning tries success')	
 			return {
 				...state,
 				entriesList: action.entriesInfo
 			};
 		default:
+			console.log('returning default')
 			return state;
 	}
 }

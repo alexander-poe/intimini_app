@@ -9,6 +9,9 @@ body {
 span {
   text-align: center; }
 
+img {
+  margin: 10px; }
+
 li {
   padding: 10px;
   margin: 10px; }
@@ -17,20 +20,28 @@ ul {
   padding: 0;
   margin: 0; }
 
+.textinput {
+  width: 100%; }
+
+.home {
+  background-color: white; }
+
 .welcome {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
   padding: 20px;
-  width: 50%;
+  width: 65%;
   height: auto;
   margin: 0 auto;
   background-color: white;
   border-radius: 5px; }
 
 .journal-entry {
-  width: 60%;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 5px; }
 
 .awkward {
@@ -56,5 +67,7 @@ ul {
 .sad {
   background-color: #c8f3f4;
   color: black; }
+
+/*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */
 
 /*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */

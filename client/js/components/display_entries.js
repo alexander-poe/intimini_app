@@ -8,11 +8,10 @@ class DisplayEntries extends React.Component {
 	render () {
 		const authUser = this.props.user.id;
 		let mood, date, content, classNames;
-
 		const entriesArray = this.props.entries.filter((entry) => {
 			return (entry.user_id === authUser);
-		})
-		const eachEntry = entriesArray.map((entry, idx) => {
+		});
+		const eachEntry = this.props.entries.map((entry, idx) => {
 			mood = <p>{entry.mood}</p>
 			date = <p>{entry.date}</p>
 			content = <p>{entry.entry}</p>
@@ -31,7 +30,7 @@ class DisplayEntries extends React.Component {
 				</div>
 			);
 		});
-
+console.info(eachEntry.length);
 			return (
 				<div>{eachEntry}</div>
 			)

@@ -51,7 +51,7 @@ export const getEntries = (id = '') => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
-			console.log('get entry success');
+			console.log('get entry success', res);
 			dispatch(getEntriesSuccess(res));
 		}).catch(err => {
 			console.log('error:', err);

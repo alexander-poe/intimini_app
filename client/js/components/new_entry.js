@@ -13,15 +13,15 @@ export default class NewEntry extends React.Component {
 
 	render () {
 		return (
-			<form onSubmit={this.sendAddData}>
+			<form className="textarea" onSubmit={this.sendAddData}>
 				<ul>
 					<li>
-						Mood
 						&nbsp;
-						<input type="text" ref={moodInput => this.moodInput = moodInput} />
+						<input type="text" className="textinput" placeholder="mood"  ref={moodInput => this.moodInput = moodInput} />
 					</li>
 					<li>
-						<textarea
+						<textarea 
+							className="textinput"
 							rows="10"
 							cols="100"
 							ref={input => this.textInput = input}

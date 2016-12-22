@@ -11,7 +11,7 @@ function Welcome (props) {
 			<button onClick={props.logInUser}>Come on in!</button>
 			<br />
 			<span>
-				{'Place image here'}
+				<img src="../assets/logo2.png" height="35" width="35"/>
 			</span>
 		</div>
 	)
