@@ -35,9 +35,40 @@ export default function DisplayEntries (props) {
 		} else {
 			editButtons = ''
 		}
+		const moods = [{
+					mood: 'sad',
+					color: '#E35A2D',
+				}, {
+					mood: 'bored',
+					color: '#5BE32D'
+				}, {
+					mood: 'happy',
+					color: '#B52DE3'
+				}]
+				moods.forEach(function (mood) {
+						let x = mood.mood;
+						let c = mood.color;
+						if(mood === x) {
+						return (
+							<div
+								onClick={props.selectEntry.bind(null, entry.id)}
+								className="journal-entry"
+								key={idx}
+								id={entry.id}
+								>
+								<ul>
+									<div className={x}>
+										<li>{mood}</li>
+										<li>{content}</li>
+									</div>
+								</ul>
+							</div>
+						);
+					}
+				});
 		return (
 			<div
-				onDoubleClick={props.selectEntry.bind(null, entry.id)}
+				onClick={props.selectEntry.bind(null, entry.id)}
 				className="journal-entry"
 				key={idx}
 				id={entry.id}
