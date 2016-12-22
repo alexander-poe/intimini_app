@@ -2,6 +2,7 @@ import React from 'react';
 
 class DisplayEntries extends React.Component {
 	constructor(props) {
+		console.log(props);
 		super(props);
 	}
 
@@ -19,18 +20,23 @@ class DisplayEntries extends React.Component {
 			return (
 				<div
 					className={classNames}
-					onClick={this.props.selectEntry.bind(null, entry.id)}
+					onClick={this.props.selectEntry.bind(
+						null,
+						entry.id,
+						entry.mood,
+						true,
+						entry.entry
+					)}
 					key={idx}
 					id={entry.id}
 					>
-					<ul class>
+					<ul>
 						<li>{mood}</li>
 						<li>{content}</li>
 					</ul>
 				</div>
 			);
 		});
-console.info(eachEntry.length);
 			return (
 				<div>{eachEntry}</div>
 			)

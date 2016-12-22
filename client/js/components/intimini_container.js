@@ -39,14 +39,13 @@ class LoginContainer extends React.Component {
 	}
 
 // ENTRIES
-
 	showNewEntry() {
 		this.props.dispatch(actions.showNewEntry());
 	}
 
-	selectEntry (id) {
+	selectEntry (id, mood, selected, entry) {
 		this.showNewEntry();
-		this.props.dispatch(actions.getEntries(id));
+		this.props.dispatch(actions.selectEntry(id));
 	}
 
 	postNewEntry (text, mood) {
@@ -55,20 +54,18 @@ class LoginContainer extends React.Component {
 
 	deleteEntry (id) {
 		this.props.dispatch(actions.deleteEntry(id));
-		this.props.dispatch(actions.getEntries());
 	}
 
-	updateEntry (id, text) {
-		this.props.dispatch(actions.updateEntry(id, text));
+	updateEntry (id, mood, selected, entry) {
+		this.props.dispatch(actions.updateEntry(id, mood, selected, entry));
 	}
 
 	render () {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries = [];
-
-		console.log('get entries', stateEntries);
+		let users, entries = [], filteredEntry;
+		let selectedId = this.props.store.selectedEntryReducer.selectedEntryId;
 
 		!stateUsers ?
 		users = '' :
@@ -78,18 +75,19 @@ class LoginContainer extends React.Component {
 
 		if (!stateEntries) {
 			entries = '';
-	} else if (stateEntries.entry) {
-			entries.push(stateEntries.entry[0]);
 		} else {
 			entries = stateEntries.entries.map((entry, idx) => {
 				return entry;
 			});
+			filteredEntry = stateEntries.entries.find((entry) => {
+				return (entry.id === selectedId);
+			});
 		}
-
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
-		if (this.props.store.showReducer === true) {
+		// looking at multiple entries
+		if (!filteredEntry) {
 			return (
 				<div>
 					<EntriesHeader user={isLoggedIn} />
@@ -102,26 +100,26 @@ class LoginContainer extends React.Component {
 					/>
 						<div className="home">
 							<a href="#Top">
-								<img 
-								src="../assets/home.png" 
-								height="21" 
+								<img
+								src="../assets/home.png"
+								height="21"
 								width="21"
 								/>
 								</a>
 							<a href="https://www.facebook.com/">
-								<img 
-								src="../assets/fb.png" 
-								height="19" 
+								<img
+								src="../assets/fb.png"
+								height="19"
 								width="19"
 								/>
 							</a>
 							<a href="https://www.gmail.com">
-								<img 
-								src="../assets/email.png" 
-								height="19" 
+								<img
+								src="../assets/email.png"
+								height="19"
 								width="19"
 								/>
-							</a>		
+							</a>
 						</div>
 				</div>
 			)
@@ -131,30 +129,30 @@ class LoginContainer extends React.Component {
 					<EntriesHeader user={isLoggedIn} />
 					<DisplayOneEntry
 						user={isLoggedIn}
-						entries={entries}
+						entry={filteredEntry}
 						toggleShow={this.toggleShow}
-						updateEntry={this.updateEntry}
+						selectEntry={this.selectEntry}
 						deleteEntry={this.deleteEntry}
 					/>
 						<div className="home">
 							<a href="#Top">
-								<img 
-								src="../assets/home.png" 
-								height="21" 
+								<img
+								src="../assets/home.png"
+								height="21"
 								width="21"
 								/>
 								</a>
 							<a href="https://www.facebook.com/">
-								<img 
-								src="../assets/fb.png" 
-								height="19" 
+								<img
+								src="../assets/fb.png"
+								height="19"
 								width="19"
 								/>
 							</a>
 							<a href="https://www.gmail.com">
-								<img 
-								src="../assets/email.png" 
-								height="19" 
+								<img
+								src="../assets/email.png"
+								height="19"
 								width="19"
 								/>
 							</a>

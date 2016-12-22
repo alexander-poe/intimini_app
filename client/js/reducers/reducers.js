@@ -16,6 +16,18 @@ const showReducer = (state = true, action) => {
 	}
 }
 
+const selectedEntryReducer = (state = '', action) => {
+	switch (action.type) {
+		case actions.SELECT_ENTRY:
+			console.log('selectedEntryReducer', action.id);
+			return {
+				selectedEntryId: action.id
+			}
+		default:
+			return state;
+	}
+}
+
 const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_USER_SUCCESS:
@@ -78,6 +90,7 @@ const entrySelector = (state = '', action) => {
 
 export default combineReducers({
 	showReducer,
+	selectedEntryReducer,
   usersReducer,
   entriesReducer
 });

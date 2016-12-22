@@ -31,6 +31,7 @@ class EntriesHeader extends React.Component {
 					</select>
 					<button type="submit">Filter</button>
 				</form>
+				<hr />
 			</div>
 		)
 	}

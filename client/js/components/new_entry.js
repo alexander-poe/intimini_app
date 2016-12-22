@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class NewEntry extends React.Component {
+class NewEntry extends React.Component {
 	constructor (props) {
 		super(props);
 		this.sendAddData = this.sendAddData.bind(this);
@@ -9,8 +9,8 @@ export default class NewEntry extends React.Component {
 	sendAddData(e) {
 		e.preventDefault();
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
-		this.textInput.value = null;
-		this.moodInput.value = null;
+		this.textInput.value = '';
+		this.moodInput.value = '';
 	}
 
 	render () {
@@ -19,15 +19,15 @@ export default class NewEntry extends React.Component {
 				<ul>
 					<li>
 						&nbsp;
-						<input 
-						type="text" 
-						className="textinput" 
-						placeholder="mood"  
-						ref={moodInput => this.moodInput = moodInput} 
+						<input
+						type="text"
+						className="textinput"
+						placeholder="mood"
+						ref={moodInput => this.moodInput = moodInput}
 						/>
 					</li>
 					<li>
-						<textarea 
+						<textarea
 						    id="clear"
 							className="textinput"
 							rows="10"
@@ -45,3 +45,5 @@ export default class NewEntry extends React.Component {
 		)
 	}
 }
+
+export default NewEntry;

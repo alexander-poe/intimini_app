@@ -1,19 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 
 class DisplayOneEntry extends React.Component {
 	constructor (props) {
-		console.log('display one entry', props);
 		super(props);
 		this.sendAddData = this.sendAddData.bind(this);
 	}
 
 	sendAddData(e) {
 		e.preventDefault();
-		this.props.updateEntry(this.props.entries[0].id, this.textInput.value);
+		this.props.dispatch(actions.updateEntry(
+			this.props.entry.id,
+			this.props.entry.mood,
+			this.props.entry.selected,
+			this.textInput.value));
 	}
 
 	render () {
-		const entry = this.props.entries[0];
+		console.log('props', this.props);
+		const entry = this.props.entry;
 		return (
 			<form 
 			className="textarea" 
@@ -41,4 +47,8 @@ class DisplayOneEntry extends React.Component {
 	}
 }
 
-export default DisplayOneEntry;
+const mapStateToProps = (state, props) => ({
+	store: state
+});
+
+export default connect(mapStateToProps)(DisplayOneEntry);

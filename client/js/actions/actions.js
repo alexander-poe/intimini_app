@@ -32,7 +32,8 @@ export const deleteUserSuccess = userInfo => ({
 export const GET_ENTRIES_SUCCESS = 'GET_ENTRIES_SUCCESS';
 export const getEntriesSuccess = entriesInfo => ({
 	type: GET_ENTRIES_SUCCESS,
-	entriesInfo
+	entriesInfo,
+	selected: false
 });
 
 export const DELETE_ENTRY_SUCCESS = 'DELETE_ENTRY_SUCCESS';
@@ -41,7 +42,27 @@ export const deleteEntrySuccess = entryInfo => ({
 	entryInfo
 });
 
+export const SELECT_ENTRY = 'SELECT_ENTRY';
+export const selectEntry = id => ({
+	type: SELECT_ENTRY,
+	id
+})
+
 // ASYNC // ENTRIES
+
+export const selectAndUpdate = (id, mood, selected, entry) => dispatch => {
+	return fetch(entries_url + '/' + id)
+		.then(res => {
+			if(!res.ok) {
+				throw new Error(res.statusText);
+			}
+			return res.json()
+		}).then(res => {
+			dispatch(selectEntry(id))
+		}).then(res => {
+			dispatch(updateEntry(id, mood, selected, entry))
+		});
+};
 
 export const getEntries = (id = '') => dispatch => {
 	return fetch(entries_url + '/' + id)
@@ -106,25 +127,28 @@ export const deleteEntry = (id) => dispatch => {
 		})
 }
 
-export const updateEntry = (id, text) => dispatch => {
-	return fetch(entries_url,
+export const updateEntry = (id, mood, selected, entry) => dispatch => {
+	debugger;
+	return fetch(entries_url + '/',
 		{
 			method: "PUT",
 			body: JSON.stringify({
-				id: id,
-				mood: "awkward",
-				entry: text
+				id,
+				mood,
+				selected,
+				entry
 			}),
 			headers: {"Content-Type": "application/json"}
 		}
-	)
-		.then(res => {
+	).then(res => {
+		debugger;
 			if(!res.ok) {
 				throw new Error(res.statusText);
 			}
 			return res.json()
 		}).then(res => {
-			console.log('update entry success');
+			debugger;
+			console.log('update entry success', res);
 		}).catch(err => {
 			console.log('error:', err);
 		})
