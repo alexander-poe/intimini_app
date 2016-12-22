@@ -23,7 +23,7 @@ class DisplayEntries extends React.Component {
 					key={idx}
 					id={entry.id}
 					>
-					<ul>
+					<ul class>
 						<li>{mood}</li>
 						<li>{content}</li>
 					</ul>

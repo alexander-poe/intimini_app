@@ -61,3 +61,13 @@ not an option
 {
 "id" : 3
 }
+
+
+css note
+
+.awkward::before {
+  padding-top: 2cm;
+  content: url('../assets/happiness.png')
+ }
+
+ http://www.flaticon.com/free-icon/happiness_158420
