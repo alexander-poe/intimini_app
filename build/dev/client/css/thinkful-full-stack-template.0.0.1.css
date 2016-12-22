@@ -21,10 +21,12 @@ ul {
   margin: 0; }
 
 .textinput {
-  width: 100%; }
+  width: 100%;
+  border-radius: 5px; }
 
 .home {
-  background-color: white; }
+  background-color: white;
+  border-radius: 5px; }
 
 .welcome {
   flex-direction: column;

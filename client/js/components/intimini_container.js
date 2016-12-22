@@ -114,7 +114,14 @@ class LoginContainer extends React.Component {
 								height="19" 
 								width="19"
 								/>
-							</a>	
+							</a>
+							<a href="https://www.gmail.com">
+								<img 
+								src="../assets/email.png" 
+								height="19" 
+								width="19"
+								/>
+							</a>		
 						</div>
 				</div>
 			)
@@ -143,7 +150,14 @@ class LoginContainer extends React.Component {
 								height="19" 
 								width="19"
 								/>
-							</a>	
+							</a>
+							<a href="https://www.gmail.com">
+								<img 
+								src="../assets/email.png" 
+								height="19" 
+								width="19"
+								/>
+							</a>
 						</div>
 				</div>
 			)
