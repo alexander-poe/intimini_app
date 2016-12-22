@@ -1,31 +1,39 @@
 import React from 'react';
 
-export default function EntriesHeader(props) {
-	const changeFilter = (event) => {
-		let filterVal = this.selection.value;
+class EntriesHeader extends React.Component {
+	constructor(props) {
+		super(props);
+		this.changeFilter = this.changeFilter.bind(this);
 	}
 
-	return (
-		<div className="menu-bar">
-			<form>
-				<button className="back-to-top">Back to top</button>
-			</form>
-			<hr />
-			<form>
-				<select>
-					<option value="mood">Mood</option>
-					<option value="happy">Happy</option>
-					<option value="sad">Sad</option>
-					<option value="bored">Bored</option>
-				</select>
-				<button onClick={changeFilter}>Filter</button>
-			</form>
-			<hr />
-			<form>
-				<input type="text" placeholder="Search past entries" />
-				<button>Search</button>
-			</form>
-			<hr />
-		</div>
-	)
+	changeFilter (e) {
+		e.preventDefault();
+		let filterVal = this.mood.value;
+		console.log(filterVal)
+	}
+
+	render () {
+		return (
+			<div className="menu-bar">
+				<form>
+					<button className="back-to-top">Back to top</button>
+				</form>
+				<hr />
+				<form onSubmit={this.changeFilter}>
+					<select>
+						<option value="mood">Mood</option>
+						<option value="happy" ref={input => this.mood = input}>
+							Happy</option>
+						<option value="sad" ref={input => this.mood = input}>
+							Sad</option>
+						<option value="bored" ref={input => this.mood = input}>
+							Bored</option>
+					</select>
+					<button type="submit">Filter</button>
+				</form>
+			</div>
+		)
+	}
 }
+
+export default EntriesHeader;

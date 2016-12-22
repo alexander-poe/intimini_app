@@ -9,6 +9,10 @@ function Welcome (props) {
 		<div className="welcome">
 			<h2>Welcome to Intimini</h2>
 			<button onClick={props.logInUser}>Come on in!</button>
+			<br />
+			<span>
+				{'Place image here'}
+			</span>
 		</div>
 	)
 }

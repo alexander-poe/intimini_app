@@ -1,6 +1,6 @@
-- contentEditable...?
 - refresh/update to correct pages after changes
-- make separate page for editing
-- update reducers
 - on blur...
-- get showReducer to toggle
+**** - make new entries COLORFUL
+**** - where tf is the single entry! i cry ****
+- clean up backend endpoints
+- complete CRUD endpoints w/ reducers for all action creators

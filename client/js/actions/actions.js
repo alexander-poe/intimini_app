@@ -58,13 +58,13 @@ export const getEntries = (id = '') => dispatch => {
 		});
 }
 
-export const postNewEntry = (text) => dispatch => {
-	console.log('actions.js arg', text);
+export const postNewEntry = (text, mood) => dispatch => {
+	console.log('actions.js arg', text, mood);
 	return fetch(entries_url,
 		{
 			method: "POST",
 			body: JSON.stringify({
-				mood: "happy",
+				mood: mood,
 				entry: text,
 				user_id: 4
 			}),

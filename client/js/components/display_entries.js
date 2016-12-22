@@ -7,19 +7,20 @@ class DisplayEntries extends React.Component {
 
 	render () {
 		const authUser = this.props.user.id;
-		let mood, date, content;
+		let mood, date, content, classNames;
 
 		const entriesArray = this.props.entries.filter((entry) => {
 			return (entry.user_id === authUser);
 		})
 		const eachEntry = entriesArray.map((entry, idx) => {
-			var mood = <p>{entry.mood}</p>
-			var date = <p>{entry.date}</p>
-			let content = <p>{entry.entry}</p>
+			mood = <p>{entry.mood}</p>
+			date = <p>{entry.date}</p>
+			content = <p>{entry.entry}</p>
+			classNames = `${entry.mood} journal-entry`
 			return (
 				<div
+					className={classNames}
 					onClick={this.props.selectEntry.bind(null, entry.id)}
-					className="journal-entry"
 					key={idx}
 					id={entry.id}
 					>

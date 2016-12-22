@@ -8,13 +8,18 @@ export default class NewEntry extends React.Component {
 
 	sendAddData(e) {
 		e.preventDefault();
-		this.props.postNewEntry(this.textInput.value);
+		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
 	}
 
 	render () {
 		return (
 			<form onSubmit={this.sendAddData}>
 				<ul>
+					<li>
+						Mood
+						&nbsp;
+						<input type="text" ref={moodInput => this.moodInput = moodInput} />
+					</li>
 					<li>
 						<textarea
 							rows="10"

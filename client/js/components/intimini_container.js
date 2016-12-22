@@ -49,8 +49,8 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.getEntries(id));
 	}
 
-	postNewEntry (text) {
-		this.props.dispatch(actions.postNewEntry(text));
+	postNewEntry (text, mood) {
+		this.props.dispatch(actions.postNewEntry(text, mood));
 	}
 
 	deleteEntry (id) {
