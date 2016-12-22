@@ -46,7 +46,9 @@ ul {
   margin-right: auto;
   border-radius: 5px; }
 
-
+.awkward::before {
+  padding-top: 2cm;
+  content: url("../assets/happiness.png"); }
 
 .awkward {
   background-color: #be829b; }
