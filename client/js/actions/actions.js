@@ -1,5 +1,5 @@
-const users_url = "http://localhost:8080/users";
-const entries_url = "http://localhost:8080/entries";
+const users_url = "/users";
+const entries_url = "/entries";
 
 export const SHOW_NEW_ENTRY = 'SHOW_NEW_ENTRY';
 export const showNewEntry = () => ({
@@ -87,7 +87,7 @@ export const postNewEntry = (text, mood) => dispatch => {
 			body: JSON.stringify({
 				mood: mood,
 				entry: text,
-				user_id: 4
+				user_id: 1
 			}),
 			headers: {"Content-Type": "application/json"}
 		}
@@ -128,7 +128,6 @@ export const deleteEntry = (id) => dispatch => {
 }
 
 export const updateEntry = (id, mood, selected, entry) => dispatch => {
-	debugger;
 	return fetch(entries_url + '/',
 		{
 			method: "PUT",
@@ -141,7 +140,6 @@ export const updateEntry = (id, mood, selected, entry) => dispatch => {
 			headers: {"Content-Type": "application/json"}
 		}
 	).then(res => {
-		debugger;
 			if(!res.ok) {
 				throw new Error(res.statusText);
 			}
@@ -176,7 +174,7 @@ export const deleteUser = () => dispatch => {
 	return fetch(url,
 		{
 			method: "DELETE",
-			body: JSON.stringify({id: 2}),
+			body: JSON.stringify({id: 1}),
 			headers: {"Content-Type": "application/json"}
 		}
 	)

@@ -8,9 +8,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const knex = require('knex')({
   client: 'pg',
-  connection: {
-    database: 'intimini'
-  },
+  connection: 'postgres://fqnvomqp:Lyfw-La-Oa7ektUTAj7a0cUDugj5TBej@elmer.db.elephantsql.com:5432/fqnvomqp'
 });
 app.use(bodyParser.json());
 
@@ -24,7 +22,7 @@ app.get('/users', (req, res) => {
     });
 });
 app.get('/entries', (req, res) => {
-    knex('entries').select('id', 'selected', 'mood', 'date', 'entry', 'user_id')
+    knex('entries').select('id', 'mood', 'date', 'entry', 'user_id')
 			.then((entries) => {
       	return res.json({entries})
     });
@@ -37,7 +35,7 @@ app.get('/entries/u', (req, res) => {
     });
 });
 app.get('/entries/:entry', (req, res) => {
-    knex('entries').where({id: req.params.entry}).select('id', 'selected', 'mood', 'date', 'entry', 'user_id').then((entry) => {
+    knex('entries').where({id: req.params.entry}).select('id', 'mood', 'date', 'entry', 'user_id').then((entry) => {
         return res.status(200).json({entry})
     });
 });

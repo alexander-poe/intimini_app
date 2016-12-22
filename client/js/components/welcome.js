@@ -20,7 +20,7 @@ function Welcome (props) {
 const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch) => ({
 	logInUser: function () {
-		dispatch(toggleLogin(4))
+		dispatch(toggleLogin(1))
 	}
 });
 

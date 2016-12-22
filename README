@@ -17,6 +17,11 @@ create table if not exists Users (
 		user_id integer references users
 );
 
+INSERT INTO users(username, password)
+			VALUES ('alex', 'blahblah')
+INSERT INTO entries(mood, date, entry, user_id)
+			VALUES ('happy', '1111-11-11', 'hey i am entry', 1)
+
 
 backend
 #get all entries
