@@ -1,4 +1,5 @@
 import React from 'react';
+import EntriesView from './entries_view';
 
 // HARD CODED:
 // edited entry text
@@ -39,50 +40,8 @@ class DisplayEntries extends React.Component {
 			} else {
 				editButtons = ''
 			}
-			const moods = [{
-						mood: 'sad',
-						color: '#E35A2D',
-					}, {
-						mood: 'bored',
-						color: '#5BE32D'
-					}, {
-						mood: 'happy',
-						color: '#B52DE3'
-					}]
-					moods.forEach(function (mood) {
-							let x = mood.mood;
-							let c = mood.color;
-							if(mood === x) {
-							return (
-								<div
-									onClick={this.props.selectEntry.bind(null, entry.id)}
-									className="journal-entry"
-									key={idx}
-									id={entry.id}
-									>
-									<ul>
-										<div className={x}>
-											<li>{mood}</li>
-											<li>{content}</li>
-										</div>
-									</ul>
-								</div>
-							);
-						}
-					});
 			return (
-				<div
-					onClick={this.props.selectEntry.bind(null, entry.id)}
-					className="journal-entry"
-					key={idx}
-					id={entry.id}
-					>
-					<ul>
-						<li>{mood}</li>
-						<li>{content}</li>
-						<li>{editButtons}</li>
-					</ul>
-				</div>
+				<EntriesView onClick={this.props.selectEntry.bind(null, entry.id)} mood={mood} />
 			);
 		});
 
