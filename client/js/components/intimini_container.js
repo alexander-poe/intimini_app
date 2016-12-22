@@ -45,7 +45,7 @@ class LoginContainer extends React.Component {
 
 	selectAndUpdate (id, mood, selected, entry) {
 		this.showNewEntry();
-		this.props.dispatch(actions.selectAndUpdate(id, mood, selected, entry));
+		// this.props.dispatch(actions.selectAndUpdate(id, mood, selected, entry));
 	}
 
 	postNewEntry (text, mood) {
@@ -64,7 +64,8 @@ class LoginContainer extends React.Component {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries = [], filteredEntries = [];
+		let users, entries = [], filteredEntry = '';
+		let selectedId = 7;
 
 		!stateUsers ?
 		users = '' :
@@ -78,13 +79,11 @@ class LoginContainer extends React.Component {
 			entries = stateEntries.entries.map((entry, idx) => {
 				return entry;
 			});
-			filteredEntries = stateEntries.entries.filter((entry) => {
-				return (entry.selected === true)
+			filteredEntry = stateEntries.entries.find((entry) => {
+				// console.log('filtering', entry);
+				return (entry.id === selectedId);
 			});
 		}
-
-		console.log('ENTRIES', entries);
-		console.log('FILTERED', filteredEntries);
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
@@ -108,7 +107,7 @@ class LoginContainer extends React.Component {
 					<EntriesHeader user={isLoggedIn} />
 					<DisplayOneEntry
 						user={isLoggedIn}
-						entries={entries}
+						entry={filteredEntry}
 						toggleShow={this.toggleShow}
 						selectAndUpdate={this.selectAndUpdate}
 						deleteEntry={this.deleteEntry}

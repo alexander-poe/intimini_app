@@ -8,22 +8,18 @@ class DisplayOneEntry extends React.Component {
 		this.sendAddData = this.sendAddData.bind(this);
 	}
 
-	componentDidMount () {
-		this.props.dispatch(actions.getEntries());
-	}
-
 	sendAddData(e) {
 		e.preventDefault();
 		this.props.dispatch(actions.updateEntry(
-			this.props.entries[0].id,
-			this.props.entries[0].mood,
-			this.props.entries[0].selected,
+			this.props.entry.id,
+			this.props.entry.mood,
+			this.props.entry.selected,
 			this.textInput.value));
 	}
 
 	render () {
-		console.log('display one entry', this.props);
-		const entry = this.props.entries[0];
+		console.log('props', this.props);
+		const entry = this.props.entry;
 		return (
 			<form onSubmit={this.sendAddData}>
 				<ul>
