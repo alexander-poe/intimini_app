@@ -1,11 +1,40 @@
 import React from 'react';
 
-export default function DisplayOneEntry (props) {
-	console.log(props);
+class DisplayOneEntry extends React.Component {
+	constructor (props) {
+		console.log('display one entry', props);
+		super(props);
+		this.sendAddData = this.sendAddData.bind(this);
+	}
 
-	
+	sendAddData(e) {
+		e.preventDefault();
+		this.props.updateEntry(this.props.entries[0].id, this.textInput.value);
+	}
 
-	return (
-		<div>{props.entries[0].entry}</div>
-	)
+	render () {
+		const entry = this.props.entries[0];
+		return (
+			<form onSubmit={this.sendAddData}>
+				<ul>
+					<li>{entry.mood}</li>
+					<li><textarea
+						rows="10"
+						cols="100"
+						ref={input => this.textInput = input}
+						defaultValue={entry.entry} />
+					</li>
+					<button type="submit">Edit</button>
+					&nbsp;
+					<button
+						onClick={this.props.deleteEntry.bind(null, entry.id)}
+						className="delete-button">
+						Delete
+					</button>
+				</ul>
+			</form>
+		)
+	}
 }
+
+export default DisplayOneEntry;

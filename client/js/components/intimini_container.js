@@ -58,9 +58,8 @@ class LoginContainer extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
-	updateEntry (text) {
-		console.log('intimini', text);
-		// this.props.dispatch(actions.updateEntry(id, text));
+	updateEntry (id, text) {
+		this.props.dispatch(actions.updateEntry(id, text));
 	}
 
 	render () {
