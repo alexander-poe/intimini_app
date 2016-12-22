@@ -52,7 +52,6 @@ class LoginContainer extends React.Component {
 		const stateEntries = this.props.store.entriesReducer.entriesList;
 		let users, entries = [];
 
-		console.log('get entries', stateEntries);
 
 		!stateUsers ?
 		users = '' :
@@ -76,7 +75,7 @@ class LoginContainer extends React.Component {
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
 		return (
-			<div>
+			<div className="container">
 				<EntriesHeader user={isLoggedIn} />
 				<NewEntry postNewEntry={this.postNewEntry} />
 				<DisplayEntries

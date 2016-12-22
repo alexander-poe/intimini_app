@@ -39,7 +39,7 @@ export const deleteEntrySuccess = entryInfo => ({
 // ASYNC // ENTRIES
 
 export const getEntries = (id = '') => dispatch => {
-	return fetch(entries_url + '/' + id)
+	return fetch(entries_url)
 		.then(res => {
 			if(!res.ok) {
 				throw new Error(res.statusText);

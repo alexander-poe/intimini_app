@@ -46,7 +46,7 @@ app.get('/entries/:entry', (req, res) => {
 // POST
 app.post('/users', (req, res) => {
     const body = req.body;
-     if (!body)  {
+    if (!body)  {
         return res.status(400).json({
             message: 'No request body'
         })
@@ -69,7 +69,7 @@ app.post('/users', (req, res) => {
         })
     }
 
-     if (typeof body.password !== 'string') {
+    if (typeof body.password !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: password'
         })
@@ -88,7 +88,7 @@ app.post('/users', (req, res) => {
 app.post('/entries', (req, res) => {
     const body = req.body;
     console.log('entry post body', body);
-     if (!body)  {
+    if (!body)  {
         return res.status(400).json({
             message: 'No request body'
         })
@@ -98,7 +98,7 @@ app.post('/entries', (req, res) => {
             message: 'Missing field: mood'
         })
     }
-     if (body.entry === " ") {
+    if (body.entry === " ") {
         return res.status(422).json({
             message: 'Missing field: entry'
         })
@@ -134,7 +134,7 @@ app.put('/entries', (req, res) => {
             message: 'Missing field: mood'
         })
     }
-    if (typeof body.username !== 'string') {
+    if (typeof body.mood !== 'string') {
         return res.status(422).json({
             message: 'Incorrect field type: mood'
         })
@@ -202,10 +202,10 @@ app.delete('/entries/:entry_id', (req, res) => {
     }
     knex('entries').where({
         id: req.params.entry_id
-        }).del().then(count => {
+    }).del().then(count => {
         console.log(count);
         return res.status(200).json({})
-        }).catch(e => {
+    }).catch(e => {
         console.error(e);
         res.sendStatus(500);
         })
