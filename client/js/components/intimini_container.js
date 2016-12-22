@@ -13,6 +13,7 @@ import NewEntry from './new_entry';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
+		console.log('SANITY CHECK!!!!!!!!!!!!!!!!!!!!!!');
 		super(props);
 		this.logInUser = this.logInUser.bind(this);
 		this.selectEntry = this.selectEntry.bind(this);

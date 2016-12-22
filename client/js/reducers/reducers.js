@@ -5,6 +5,17 @@ function immutableSplice(arr, start, deleteCount, ...items) {
 	return [ ...arr.slice(0, start), ...items, ...arr.slice(start + deleteCount) ]
 }
 
+const showReducer = (state = true, action) => {
+	switch (action.type) {
+		case actions.SHOW_NEW_ENTRY:
+			return {
+				show: false
+			}
+		default:
+			return state;
+	}
+}
+
 const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_USER_SUCCESS:
@@ -26,7 +37,7 @@ const usersReducer = (state = [], action) => {
 				...state,
 				usersList: action.userInfo,
 			};
-		case actions.TOGGLE_LOG_IN:
+		case actions.TOGGLE_LOGIN:
 			var userToUpdate = state.usersList.filter((user) => {
 				return (user.id === action.userId)
 			});
@@ -44,7 +55,6 @@ const usersReducer = (state = [], action) => {
 const entriesReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.GET_ENTRIES_SUCCESS:
-			console.log('reducers', action.entriesInfo);
 			return {
 				...state,
 				entriesList: action.entriesInfo
@@ -64,6 +74,7 @@ const entrySelector = (state = '', action) => {
 }
 
 export default combineReducers({
+	showReducer,
   usersReducer,
   entriesReducer
 });
