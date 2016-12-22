@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default function DisplayEntries (props) {
+class DisplayEntries extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-		const authUser = props.user.id;
+	render () {
+		const authUser = this.props.user.id;
 		let mood, date, content;
 
-		const entriesArray = props.entries.filter((entry) => {
+		const entriesArray = this.props.entries.filter((entry) => {
 			return (entry.user_id === authUser);
 		})
 		const eachEntry = entriesArray.map((entry, idx) => {
@@ -14,7 +18,7 @@ export default function DisplayEntries (props) {
 			let content = <p>{entry.entry}</p>
 			return (
 				<div
-					onClick={props.selectEntry.bind(null, entry.id)}
+					onClick={this.props.selectEntry.bind(null, entry.id)}
 					className="journal-entry"
 					key={idx}
 					id={entry.id}
@@ -31,3 +35,6 @@ export default function DisplayEntries (props) {
 				<div>{eachEntry}</div>
 			)
 	}
+}
+
+export default DisplayEntries;
