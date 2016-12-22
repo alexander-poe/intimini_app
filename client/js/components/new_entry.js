@@ -1,9 +1,5 @@
 import React from 'react';
 
-// HARD CODED:
-// new entry text
-// this is not working and it is incredibly frustrating
-
 export default class NewEntry extends React.Component {
 	constructor (props) {
 		super(props);

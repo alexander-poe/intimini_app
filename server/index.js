@@ -23,7 +23,6 @@ app.get('/users', (req, res) => {
         return res.status(200).json({users});
     });
 });
-// changed this so it returns all info about each entry
 app.get('/entries', (req, res) => {
     knex('entries').select('id', 'mood', 'date', 'entry', 'user_id')
 			.then((entries) => {
@@ -37,12 +36,12 @@ app.get('/entries/u', (req, res) => {
         return res.status(200).json({entries})
     });
 });
-// make this a variable endpoint?
 app.get('/entries/:entry', (req, res) => {
     knex('entries').where({id: req.params.entry}).select('id', 'mood', 'date', 'entry', 'user_id').then((entry) => {
         return res.status(200).json({entry})
     });
 });
+
 // POST
 app.post('/users', (req, res) => {
     const body = req.body;
