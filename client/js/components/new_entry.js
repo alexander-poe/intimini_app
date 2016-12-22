@@ -9,6 +9,8 @@ export default class NewEntry extends React.Component {
 	sendAddData(e) {
 		e.preventDefault();
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
+		this.textInput.value = null;
+		this.moodInput.value = null;
 	}
 
 	render () {
@@ -17,10 +19,16 @@ export default class NewEntry extends React.Component {
 				<ul>
 					<li>
 						&nbsp;
-						<input type="text" className="textinput" placeholder="mood"  ref={moodInput => this.moodInput = moodInput} />
+						<input 
+						type="text" 
+						className="textinput" 
+						placeholder="mood"  
+						ref={moodInput => this.moodInput = moodInput} 
+						/>
 					</li>
 					<li>
 						<textarea 
+						    id="clear"
 							className="textinput"
 							rows="10"
 							cols="100"
