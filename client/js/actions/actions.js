@@ -1,13 +1,18 @@
 const users_url = "http://localhost:8080/users";
 const entries_url = "http://localhost:8080/entries";
 
+export const SHOW_NEW_ENTRY = 'SHOW_NEW_ENTRY';
+export const showNewEntry = () => ({
+	type: SHOW_NEW_ENTRY
+});
+
 // SYNC // USERS
 
 export const TOGGLE_LOG_IN = 'TOGGLE_LOG_IN';
 export const toggleLogIn = userId => ({
 	type: TOGGLE_LOG_IN,
 	userId
-})
+});
 
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const getUserSuccess = userInfo => ({

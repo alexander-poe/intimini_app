@@ -37,7 +37,7 @@ export default function DisplayEntries (props) {
 		}
 		return (
 			<div
-				onDoubleClick={props.selectEntry.bind(null, entry.id)}
+				onClick={props.selectEntry.bind(null, entry.id)}
 				className="journal-entry"
 				key={idx}
 				id={entry.id}
