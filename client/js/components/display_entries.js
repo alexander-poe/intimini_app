@@ -20,7 +20,7 @@ class DisplayEntries extends React.Component {
 			return (
 				<div
 					className={classNames}
-					onClick={this.props.selectAndUpdate.bind(
+					onClick={this.props.selectEntry.bind(
 						null,
 						entry.id,
 						entry.mood,

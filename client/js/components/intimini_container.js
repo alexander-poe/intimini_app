@@ -9,25 +9,19 @@ import DisplayOneEntry from './display_one_entry';
 import Welcome from './welcome';
 import ErrorDisplay from './error_display';
 
-// HARD CODED:
-// logged-in user id
-
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.selectAndUpdate = this.selectAndUpdate.bind(this);
+		this.selectEntry = this.selectEntry.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
 		this.deleteEntry = this.deleteEntry.bind(this);
 		this.updateEntry = this.updateEntry.bind(this);
-		this.showNewEntry = this.showNewEntry.bind(this);
 	}
 
 	componentDidMount () {
 		this.props.dispatch(actions.getUser());
 		this.props.dispatch(actions.getEntries());
 	}
-
-// USERS
 
 	anyoneHome (users) {
 		for (var i = 0; i < users.length; i++) {
@@ -38,13 +32,8 @@ class LoginContainer extends React.Component {
 		return false;
 	}
 
-// ENTRIES
-	showNewEntry() {
+	selectEntry (id, mood, selected, entry) {
 		this.props.dispatch(actions.showNewEntry());
-	}
-
-	selectAndUpdate (id, mood, selected, entry) {
-		this.showNewEntry();
 		this.props.dispatch(actions.selectEntry(id));
 	}
 
@@ -64,8 +53,7 @@ class LoginContainer extends React.Component {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries = [], filteredEntry = '';
-		// let selectedId = 7;
+		let users, entries = [], filteredEntry;
 		let selectedId = this.props.store.selectedEntryReducer.selectedEntryId;
 
 		!stateUsers ?
@@ -81,15 +69,13 @@ class LoginContainer extends React.Component {
 				return entry;
 			});
 			filteredEntry = stateEntries.entries.find((entry) => {
-				// console.log('filtering', entry);
 				return (entry.id === selectedId);
 			});
 		}
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
-		// looking at multiple entries
-		if (this.props.store.showReducer === true) {
+		if (!filteredEntry) {
 			return (
 				<div>
 					<EntriesHeader user={isLoggedIn} />
@@ -98,7 +84,7 @@ class LoginContainer extends React.Component {
 						user={isLoggedIn}
 						entries={entries}
 						toggleShow={this.toggleShow}
-						selectAndUpdate={this.selectAndUpdate}
+						selectEntry={this.selectEntry}
 					/>;
 				</div>
 			)

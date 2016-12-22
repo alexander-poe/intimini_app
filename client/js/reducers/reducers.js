@@ -5,7 +5,7 @@ function immutableSplice(arr, start, deleteCount, ...items) {
 	return [ ...arr.slice(0, start), ...items, ...arr.slice(start + deleteCount) ]
 }
 
-const showReducer = (state = true, action) => {
+const showNewEntryField = (state = true, action) => {
 	switch (action.type) {
 		case actions.SHOW_NEW_ENTRY:
 			return {
@@ -86,7 +86,7 @@ const entrySelector = (state = '', action) => {
 }
 
 export default combineReducers({
-	showReducer,
+	showNewEntryField,
 	selectedEntryReducer,
   usersReducer,
   entriesReducer

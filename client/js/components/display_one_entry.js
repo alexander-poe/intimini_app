@@ -18,7 +18,6 @@ class DisplayOneEntry extends React.Component {
 	}
 
 	render () {
-		console.log('props', this.props);
 		const entry = this.props.entry;
 		return (
 			<form onSubmit={this.sendAddData}>
