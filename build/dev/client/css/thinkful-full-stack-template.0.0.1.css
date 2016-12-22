@@ -1,0 +1,60 @@
+* {
+  font-family: 'Shadows Into Light Two', cursive;
+  list-style: none;
+  box-sizing: border-box; }
+
+body {
+  background-color: #689CDE; }
+
+span {
+  text-align: center; }
+
+li {
+  padding: 10px;
+  margin: 10px; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+.welcome {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px; }
+
+.journal-entry {
+  width: 60%;
+  border-radius: 5px; }
+
+.awkward {
+  background-color: #be829b; }
+
+.bored {
+  background-color: #e3d1b6; }
+
+.depressed {
+  background-color: #128a94;
+  color: white; }
+
+.happy {
+  background-color: #f6bd60; }
+
+.excited {
+  background-color: #d0c022; }
+
+.ambivalent {
+  background-color: #315e65;
+  color: white; }
+
+.sad {
+  background-color: #c8f3f4;
+  color: black; }
+
+/*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */
