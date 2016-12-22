@@ -8,9 +8,9 @@ export const showNewEntry = () => ({
 
 // SYNC // USERS
 
-export const TOGGLE_LOG_IN = 'TOGGLE_LOG_IN';
-export const toggleLogIn = userId => ({
-	type: TOGGLE_LOG_IN,
+export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
+export const toggleLogin = userId => ({
+	type: TOGGLE_LOGIN,
 	userId
 });
 

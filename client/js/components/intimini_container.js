@@ -15,7 +15,6 @@ class LoginContainer extends React.Component {
 	constructor(props) {
 		console.log(props);
 		super(props);
-		this.logInUser = this.logInUser.bind(this);
 		this.selectEntry = this.selectEntry.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
 		this.deleteEntry = this.deleteEntry.bind(this);
@@ -29,10 +28,6 @@ class LoginContainer extends React.Component {
 	}
 
 // USERS
-
-	logInUser (event) {
-		this.props.dispatch(actions.toggleLogIn(4));
-	}
 
 	anyoneHome (users) {
 		for (var i = 0; i < users.length; i++) {
@@ -127,7 +122,7 @@ class LoginContainer extends React.Component {
 		}
 	} else if (users.length > 0 && entries.length > 0) {
 			return (
-				<Welcome logInUser={this.logInUser} />
+				<Welcome />
 			)
 	} else {
 			return (

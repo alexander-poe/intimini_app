@@ -37,7 +37,7 @@ const usersReducer = (state = [], action) => {
 				...state,
 				usersList: action.userInfo,
 			};
-		case actions.TOGGLE_LOG_IN:
+		case actions.TOGGLE_LOGIN:
 			var userToUpdate = state.usersList.filter((user) => {
 				return (user.id === action.userId)
 			});

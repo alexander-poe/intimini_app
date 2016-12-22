@@ -1,6 +1,10 @@
 import React from 'react';
+import {connect } from 'react-redux';
 
-export default function Welcome (props) {
+import { toggleLogin } from '../actions/actions';
+
+function Welcome (props) {
+
 	return (
 		<div className="welcome">
 			<h2>Welcome to Intimini</h2>
@@ -8,3 +12,12 @@ export default function Welcome (props) {
 		</div>
 	)
 }
+
+const mapStateToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+	logInUser: function () {
+		dispatch(toggleLogin(4))
+	}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
