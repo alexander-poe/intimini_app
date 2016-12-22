@@ -13,13 +13,17 @@ import NewEntry from './new_entry';
 
 class LoginContainer extends React.Component {
 	constructor(props) {
+<<<<<<< HEAD
 		console.log('SANITY CHECK!!!!!!!!!!!!!!!!!!!!!!');
+=======
+		console.log(props);
+>>>>>>> merge-branch
 		super(props);
-		this.logInUser = this.logInUser.bind(this);
 		this.selectEntry = this.selectEntry.bind(this);
 		this.postNewEntry = this.postNewEntry.bind(this);
 		this.deleteEntry = this.deleteEntry.bind(this);
 		this.updateEntry = this.updateEntry.bind(this);
+		this.showNewEntry = this.showNewEntry.bind(this);
 	}
 
 	componentDidMount () {
@@ -28,10 +32,6 @@ class LoginContainer extends React.Component {
 	}
 
 // USERS
-
-	logInUser (event) {
-		this.props.dispatch(actions.toggleLogIn(4));
-	}
 
 	anyoneHome (users) {
 		for (var i = 0; i < users.length; i++) {
@@ -44,8 +44,13 @@ class LoginContainer extends React.Component {
 
 // ENTRIES
 
+	showNewEntry() {
+		this.props.dispatch(actions.showNewEntry());
+	}
+
 	selectEntry (id) {
 		this.props.dispatch(actions.getEntries(id));
+		this.showNewEntry();
 	}
 
 	postNewEntry (text) {
@@ -88,22 +93,40 @@ class LoginContainer extends React.Component {
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
-		return (
-			<div>
-				<EntriesHeader user={isLoggedIn} />
-				<NewEntry postNewEntry={this.postNewEntry} />
-				<DisplayEntries
-					user={isLoggedIn}
-					entries={entries}
-					updateEntry={this.updateEntry}
-					deleteEntry={this.deleteEntry}
-					selectEntry={this.selectEntry}
-				/>;
-			</div>
-		)
+		console.log('container', this.props.store.showReducer);
+		if (this.props.store.showReducer === true) {
+			return (
+				<div>
+					<EntriesHeader user={isLoggedIn} />
+					<NewEntry postNewEntry={this.postNewEntry} />
+					<DisplayEntries
+						user={isLoggedIn}
+						entries={entries}
+						toggleShow={this.toggleShow}
+						updateEntry={this.updateEntry}
+						deleteEntry={this.deleteEntry}
+						selectEntry={this.selectEntry}
+					/>;
+				</div>
+			)
+		} else {
+			return (
+				<div>
+					<EntriesHeader user={isLoggedIn} />
+					<DisplayEntries
+						user={isLoggedIn}
+						entries={entries}
+						toggleShow={this.toggleShow}
+						updateEntry={this.updateEntry}
+						deleteEntry={this.deleteEntry}
+						selectEntry={this.selectEntry}
+					/>;
+				</div>
+			)
+		}
 	} else if (users.length > 0 && entries.length > 0) {
 			return (
-				<Welcome logInUser={this.logInUser} />
+				<Welcome />
 			)
 	} else {
 			return (

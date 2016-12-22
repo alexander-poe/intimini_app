@@ -35,5 +35,4 @@ export default class NewEntry extends React.Component {
 			</form>
 		)
 	}
-
 }
