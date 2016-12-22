@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
 import EntriesHeader from './entries_header';
+import NewEntry from './new_entry';
 import DisplayEntries from './display_entries';
+import DisplayOneEntry from './display_one_entry';
 import Welcome from './welcome';
 import ErrorDisplay from './error_display';
-import NewEntry from './new_entry';
 
 // HARD CODED:
 // logged-in user id
@@ -89,7 +90,6 @@ class LoginContainer extends React.Component {
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
-		console.log('container', this.props.store.showReducer);
 		if (this.props.store.showReducer === true) {
 			return (
 				<div>
@@ -99,8 +99,6 @@ class LoginContainer extends React.Component {
 						user={isLoggedIn}
 						entries={entries}
 						toggleShow={this.toggleShow}
-						updateEntry={this.updateEntry}
-						deleteEntry={this.deleteEntry}
 						selectEntry={this.selectEntry}
 					/>;
 				</div>
@@ -109,13 +107,12 @@ class LoginContainer extends React.Component {
 			return (
 				<div>
 					<EntriesHeader user={isLoggedIn} />
-					<DisplayEntries
+					<DisplayOneEntry
 						user={isLoggedIn}
 						entries={entries}
 						toggleShow={this.toggleShow}
 						updateEntry={this.updateEntry}
 						deleteEntry={this.deleteEntry}
-						selectEntry={this.selectEntry}
 					/>;
 				</div>
 			)
