@@ -86,17 +86,6 @@ class DisplayEntries extends React.Component {
 			);
 		});
 
-		if (entriesArray.length === 1) {
-			editButtons = (
-				<div>
-					<button className="edit-button">Edit</button>
-					<button className="delete-button">Delete</button>
-				</div>
-			)
-		} else {
-			editButtons = ''
-		}
-
 		return (
 			<div>{eachEntry}</div>
 		);
