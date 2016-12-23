@@ -1,0 +1,190 @@
+* {
+	font-family: 'Muli', sans-serif;
+
+	list-style: none;
+
+	box-sizing: border-box; }
+
+body {
+	// gray
+  background-color: #e5e5e5; }
+
+hr {
+  color: #E6E6E6; }
+
+h2 {
+	font-family: 'Permanent Marker', cursive;
+	padding-bottom: 50px; }
+
+p, h4 {
+  font-size: 1.5em; }
+
+span {
+  text-align: center; }
+
+img {
+  margin: 10px; }
+
+li {
+	font-size: 1.5em;
+  padding: 10px;
+  margin: 10px; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+textarea {
+	padding: 0px;
+	border: none;
+	background-color: white;
+	resize: none;
+	outline: none; }
+
+.icon {
+	margin-left: 10px; }
+
+.menu-bar {
+	margin-right: 20px;
+	margin-left: 20px; }
+
+.ctr {
+	margin: 20px;
+  padding: 10px;
+  background-color: #F8F8F8;
+  left: 50%;
+}
+
+.MoodCalHeading {
+  font-size: 2em;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); }
+
+.textinput {
+  width: 100%; }
+
+.post {
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); }
+
+.postcontain {
+  width: 100%; }
+
+.dropsize {
+  height: 35px; }
+
+.home {
+  background-color: white;
+  margin-top: 4px; }
+
+.welcome {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+	width: 50%;
+  height: auto;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #E6E6E6}
+
+.journal-entry {
+  width: 80%;
+	background-color: #a1a1a1;
+  margin-left: auto;
+  margin-right: auto;
+	margin-top: 20px; }
+
+.awkward::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/sad.png'); }
+
+.awkward {
+	// yellow
+  background-color: #e0dc9a;
+  border: 1px solid #e0dc9a; }
+
+.bored::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/dead.png'); }
+
+.bored {
+	// blue
+  background-color: #c0d6e4;
+  border: 1px solid 	#c0d6e4; }
+
+.depressed::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/goofy.png'); }
+
+.depressed {
+	// almost white
+	color: black;
+  background-color: #f7f7f7;
+  border: 1px solid #f7f7f7; }
+
+.happy::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/kiss.png'); }
+
+.happy {
+	// peach
+  background-color: #efbebe;
+  border: 1px solid #efbebe;}
+
+.excited::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/hilarious.png'); }
+
+.excited {
+	// pink
+  color: black;
+  background-color: #f47e7e;
+  border: 1px solid #f47e7e;}
+
+.ambivalent::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/thief.png'); }
+
+.ambivalent {
+	// gray
+	color: black;
+  background-color: #c6c0ae;
+  border: 1px solid #c6c0ae;}
+
+.sad::before {
+  position: relative;
+  left: 48%;
+  top: 32px;
+  content: url('../assets/indifferent.png'); }
+
+.sad {
+	// gray-blue
+	color: black;
+  background-color: #96c0bc;
+  border: 1px solid #96c0bc; }
+
+/*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */
