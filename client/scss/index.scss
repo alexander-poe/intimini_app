@@ -1,13 +1,24 @@
 * {
-  font-family: 'Shadows Into Light Two', cursive;
+ font-family: 'Droid Serif', serif;
   list-style: none;
   box-sizing: border-box; }
 
 body {
   background-color: #689CDE; }
 
+hr {
+  color: #E6E6E6
+}
+
+p{
+  font-size: 1.2em;
+}
+span {
+  text-align: center; }
+
 img {
-  margin: 10px; }
+  margin: 10px;
+}
 
 li {
   padding: 10px;
@@ -17,13 +28,46 @@ ul {
   padding: 0;
   margin: 0; }
 
+.MoodCalHeading {
+  font-size: 2em;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) 
+  
+}
+
 .textinput {
   width: 100%;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
+
+.post {
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+  
+}
+.postcontain {
+  width: 100%;
+}
+
+.dropsize {
+  height: 35px;
+}
+
 
 .home {
   background-color: white;
-  border-radius: 5px; }
+  margin-top: 4px;
+  border: 1px solid #E6E6E6
+}
 
 .welcome {
   flex-direction: column;
@@ -35,41 +79,105 @@ ul {
   height: auto;
   margin: 0 auto;
   background-color: white;
-  border-radius: 5px; }
+  border-radius: 5px;
+  border: 1px solid #E6E6E6}
+
+
 
 .journal-entry {
-	background-color: #d2d2d2;
-	width: 65%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px; }
 
 .awkward::before {
-  padding-top: 2cm;
-  content: url('../assets/happiness.png') }
+  position: relative;
+  left: 722px;
+  top: 32px;
+  content: url('../assets/sad.png');
+
+ } 
 
 .awkward {
-  background-color: #be829b; }
+  background-color: #be829b;
+  border: 1px solid #E6E6E6;
+  
+   }  
+
+.bored::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/dead.png');
+
+ } 
 
 .bored {
-  background-color: #e3d1b6; }
+  background-color: #e3d1b6;
+  border: 1px solid #E6E6E6; }
+
+.depressed::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/goofy.png');
+
+ }   
 
 .depressed {
   background-color: #128a94;
-  color: white; }
+  color: white; 
+  border: 1px solid #E6E6E6;}
+
+.happy::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/kiss.png');
+
+ }  
 
 .happy {
-  background-color: #f6bd60; }
+  background-color: #f6bd60; 
+  border: 1px solid #E6E6E6;}
 
 .excited {
-  background-color: #d0c022; }
+  color: white; 
+  background-color: #34A855;
+  border: 1px solid #E6E6E6;}
+
+.excited::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/hilarious.png');
+
+ }  
+
+.ambivalent::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/thief.png');
+
+ }  
 
 .ambivalent {
   background-color: #315e65;
-  color: white; }
+  color: white; 
+  border: 1px solid #E6E6E6;}
+
+.sad::before {
+  position: relative;
+  left: 722px;
+   top: 32px;
+  content: url('../assets/indifferent.png');
+
+ }    
 
 .sad {
   background-color: #c8f3f4;
-  color: black; }
+  color: black;
+  border: 1px solid #E6E6E6; }
 
 /*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */

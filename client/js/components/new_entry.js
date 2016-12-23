@@ -2,17 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/actions';
 
+
+
 class NewEntry extends React.Component {
 	constructor (props) {
 		super(props);
+		console.log('here',props)
 		this.sendAddData = this.sendAddData.bind(this);
 	}
 
 	sendAddData(e) {
 		e.preventDefault();
 		this.moodInput.value === 'mood' ?
-			this.moodInput.value = '' :
-			this.moodInput.value;
+		this.moodInput.value = '' :
+		this.moodInput.value;
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
 		this.textInput.value = '';
 		this.moodInput.value = '';
@@ -20,9 +23,14 @@ class NewEntry extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
+
+
+
 	render () {
 		return (
-			<form className="textarea" onSubmit={this.sendAddData}>
+			<form 
+			className="textarea" 
+			onSubmit={this.sendAddData}>
 				<ul>
 					<li>
 						&nbsp;
@@ -40,17 +48,22 @@ class NewEntry extends React.Component {
 					<li>
 						<textarea
 						    id="clear"
+						    placeholder="Press Enter to Submit..."
 							className="textinput"
 							rows="10"
 							cols="100"
 							ref={input => this.textInput = input}
 						></textarea>
 					</li>
-					<button
-						type="submit"
-						className="submitButton">
-						Record my thoughts
-					</button>
+					<div className="postcontain">
+						 <button
+						className="pure-button"
+                        type="submit"
+                        className="submitButton">
+                        Record my thoughts
+                    </button>
+					</div>
+				
 				</ul>
 			</form>
 		)
@@ -60,5 +73,11 @@ class NewEntry extends React.Component {
 const mapStateToProps = (state, props) => ({
 	store: state
 });
+const mapDispatchToProps = (dispatch) => ({
+	newSubmission: function () {
+		dispatch(toggleLogin(1))
+	}
+});
 
-export default connect(mapStateToProps)(NewEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(NewEntry);
+

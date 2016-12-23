@@ -27,8 +27,10 @@ class DisplayOneEntry extends React.Component {
 			className="textarea"
 			onSubmit={this.sendAddData}
 			>
+					<div></div>
+						
+						
 				<ul>
-					<li>{entry.mood}</li>
 					<li><textarea
 						className="textinput"
 						rows="10"
@@ -36,11 +38,12 @@ class DisplayOneEntry extends React.Component {
 						ref={input => this.textInput = input}
 						defaultValue={entry.entry} />
 					</li>
-					<button type="submit">Edit</button>
+					<button className="pure-button" type="submit">Edit</button>
 					&nbsp;
 					<button
+						className="pure-button delete-button"
 						onClick={this.props.deleteEntry.bind(null, entry.id)}
-						className="delete-button">
+						>
 						Delete
 					</button>
 				</ul>

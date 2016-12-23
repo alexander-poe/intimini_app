@@ -151,7 +151,6 @@ export const updateEntry = (id, mood, selected, entry) => dispatch => {
 			}
 			return res.json()
 		}).then(res => {
-			debugger;
 			console.log('update entry success', res);
 		}).catch(err => {
 			console.log('error:', err);

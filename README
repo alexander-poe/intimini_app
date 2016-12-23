@@ -71,7 +71,8 @@ not an option
 css note
 
 .awkward::before {
-  padding-top: 2cm;
+  margin-right: auto
+  margin-left:auto;
   content: url('../assets/happiness.png')
  }
 

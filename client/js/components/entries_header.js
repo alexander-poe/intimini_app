@@ -22,7 +22,7 @@ class EntriesHeader extends React.Component {
 				</span>
 				<hr />
 				<form onSubmit={this.changeFilter}>
-					<select ref={input => this.mood = input}>
+					<select className="pure-button dropsize" ref={input => this.mood = input}>
 						<option value="all">Mood</option>
 						<option value="all">All</option>
 						<option value="happy">Happy</option>
@@ -33,7 +33,7 @@ class EntriesHeader extends React.Component {
 						<option value="sad">Sad</option>
 						<option value="depressed">Depressed</option>
 					</select>
-					<button type="submit">Filter</button>
+					<button className="pure-button" type="submit">Filter</button>
 				</form>
 				<hr />
 			</div>
