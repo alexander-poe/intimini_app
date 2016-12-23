@@ -80,7 +80,6 @@ class LoginContainer extends React.Component {
 				});
 			else {
 				entries = stateEntries.entries.filter((entry) => {
-					console.log('filtered by...', entry.mood === selectedMood);
 					return (entry.mood === selectedMood);
 				});
 			}

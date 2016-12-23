@@ -15,20 +15,22 @@ class DisplayOneEntry extends React.Component {
 			this.props.entry.mood,
 			this.props.entry.selected,
 			this.textInput.value));
+		this.props.dispatch(actions.selectMood('all'));
+		this.props.dispatch(actions.getEntries());
 	}
 
 	render () {
 		console.log('props', this.props);
 		const entry = this.props.entry;
 		return (
-			<form 
-			className="textarea" 
+			<form
+			className="textarea"
 			onSubmit={this.sendAddData}
 			>
 				<ul>
 					<li>{entry.mood}</li>
 					<li><textarea
-						className="textinput" 
+						className="textinput"
 						rows="10"
 						cols="100"
 						ref={input => this.textInput = input}

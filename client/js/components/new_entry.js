@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/actions';
 
 class NewEntry extends React.Component {
 	constructor (props) {
@@ -14,6 +16,8 @@ class NewEntry extends React.Component {
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
 		this.textInput.value = '';
 		this.moodInput.value = '';
+		this.props.dispatch(actions.selectMood('all'));
+		this.props.dispatch(actions.getEntries());
 	}
 
 	render () {
@@ -53,4 +57,8 @@ class NewEntry extends React.Component {
 	}
 }
 
-export default NewEntry;
+const mapStateToProps = (state, props) => ({
+	store: state
+});
+
+export default connect(mapStateToProps)(NewEntry);
