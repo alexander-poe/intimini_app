@@ -15,12 +15,12 @@ function Welcome (props) {
 
 	return (
 		<div className="welcome">
-			<h1>Welcome to Intimini</h1>
 			<br />
 			<img src="../assets/calendar.png" height="70" width="70"/>
 			<hr/>
 			<br/>
 			<span>
+			<h1>Welcome</h1>
 				<h4> {month}&nbsp;{date} </h4>
 				<button
 					className="pure-button"

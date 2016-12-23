@@ -53,10 +53,9 @@ class NewEntry extends React.Component {
 								></textarea>
 						</li>
 						<button
-							className="pure-button"
-							type="submit"
-							className="submitButton">
-							Record my thoughts
+							className="pure-button ctr"
+							type="submit">
+							Submit Entry
 						</button>
 					</ul>
 				</form>

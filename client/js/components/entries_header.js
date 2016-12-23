@@ -17,9 +17,6 @@ class EntriesHeader extends React.Component {
 	render () {
 		return (
 			<div className="menu-bar">
-				<span>
-					<img src="../assets/logo2.png" height="35" width="35"/>
-				</span>
 				<hr />
 				<form onSubmit={this.changeFilter}>
 					<select className="pure-button dropsize" ref={input => this.mood = input}>
