@@ -9,9 +9,6 @@ import DisplayOneEntry from './display_one_entry';
 import Welcome from './welcome';
 import ErrorDisplay from './error_display';
 
-// HARD CODED:
-// logged-in user id
-
 class LoginContainer extends React.Component {
 	constructor(props) {
 		super(props);
@@ -64,8 +61,9 @@ class LoginContainer extends React.Component {
 
 		const stateUsers = this.props.store.usersReducer.usersList;
 		const stateEntries = this.props.store.entriesReducer.entriesList;
-		let users, entries = [], filteredEntry;
-		let selectedId = this.props.store.selectedEntryReducer.selectedEntryId;
+		const selectedId = this.props.store.selectedEntryReducer.selectedEntryId;
+		const selectedMood = this.props.store.selectedEntryReducer.selectedMood;
+		let users, entries = [], filteredEntry, filteredByMood;
 
 		!stateUsers ?
 		users = '' :
@@ -76,9 +74,16 @@ class LoginContainer extends React.Component {
 		if (!stateEntries) {
 			entries = '';
 		} else {
-			entries = stateEntries.entries.map((entry, idx) => {
-				return entry;
-			});
+			if ((selectedMood === 'all') || (!selectedMood))
+				entries = stateEntries.entries.map((entry, idx) => {
+					return entry;
+				});
+			else {
+				entries = stateEntries.entries.filter((entry) => {
+					console.log('filtered by...', entry.mood === selectedMood);
+					return (entry.mood === selectedMood);
+				});
+			}
 			filteredEntry = stateEntries.entries.find((entry) => {
 				return (entry.id === selectedId);
 			});
@@ -86,7 +91,6 @@ class LoginContainer extends React.Component {
 
 	if (this.anyoneHome(users)) {
 		var isLoggedIn = this.anyoneHome(users);
-		// looking at multiple entries
 		if (!filteredEntry) {
 			return (
 				<div>
@@ -134,29 +138,29 @@ class LoginContainer extends React.Component {
 						selectEntry={this.selectEntry}
 						deleteEntry={this.deleteEntry}
 					/>
-						<div className="home">
-							<a href="#Top">
-								<img
-								src="../assets/home.png"
-								height="21"
-								width="21"
-								/>
-								</a>
-							<a href="https://www.facebook.com/">
-								<img
-								src="../assets/fb.png"
-								height="19"
-								width="19"
-								/>
+					<div className="home">
+						<a href="#Top">
+							<img
+							src="../assets/home.png"
+							height="21"
+							width="21"
+							/>
 							</a>
-							<a href="https://www.gmail.com">
-								<img
-								src="../assets/email.png"
-								height="19"
-								width="19"
-								/>
-							</a>
-						</div>
+						<a href="https://www.facebook.com/">
+							<img
+							src="../assets/fb.png"
+							height="19"
+							width="19"
+							/>
+						</a>
+						<a href="https://www.gmail.com">
+							<img
+							src="../assets/email.png"
+							height="19"
+							width="19"
+							/>
+						</a>
+					</div>
 				</div>
 			)
 		}

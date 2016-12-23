@@ -6,9 +6,6 @@
 body {
   background-color: #689CDE; }
 
-span {
-  text-align: center; }
-
 img {
   margin: 10px; }
 
@@ -41,6 +38,7 @@ ul {
   border-radius: 5px; }
 
 .journal-entry {
+  background-color: #d2d2d2;
   width: 65%;
   margin-left: auto;
   margin-right: auto;

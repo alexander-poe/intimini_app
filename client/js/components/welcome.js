@@ -7,11 +7,11 @@ function Welcome (props) {
 
 	return (
 		<div className="welcome">
-			<h2>Welcome to Intimini</h2>
+			<h1>Welcome to Intimini</h1>
 			<button onClick={props.logInUser}>Come on in!</button>
 			<br />
 			<span>
-				<img src="../assets/logo2.png" height="35" width="35"/>
+				<img src="../assets/logo2.png" height="80" width="80"/>
 			</span>
 		</div>
 	)

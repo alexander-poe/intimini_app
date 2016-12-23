@@ -16,12 +16,17 @@ const showReducer = (state = true, action) => {
 	}
 }
 
-const selectedEntryReducer = (state = '', action) => {
+const selectedEntryReducer = (state = [], action) => {
 	switch (action.type) {
 		case actions.SELECT_ENTRY:
-			console.log('selectedEntryReducer', action.id);
+			console.log('selectedEntryReducer/entry', action.id);
 			return {
 				selectedEntryId: action.id
+			}
+		case actions.SELECT_MOOD:
+			console.log('selectedEntryReducer/mood', action.mood);
+			return {
+				selectedMood: action.mood
 			}
 		default:
 			return state;
@@ -68,7 +73,7 @@ const entriesReducer = (state = [], action) => {
 	console.log(action.type)
 	switch (action.type) {
 		case actions.GET_ENTRIES_SUCCESS:
-			console.log('returning tries success')	
+			console.log('returning tries success')
 			return {
 				...state,
 				entriesList: action.entriesInfo

@@ -48,6 +48,12 @@ export const selectEntry = id => ({
 	id
 })
 
+export const SELECT_MOOD = 'SELECT_MOOD';
+export const selectMood = mood => ({
+	type: SELECT_MOOD,
+	mood
+})
+
 // ASYNC // ENTRIES
 
 export const selectAndUpdate = (id, mood, selected, entry) => dispatch => {
@@ -87,7 +93,7 @@ export const postNewEntry = (text, mood) => dispatch => {
 			body: JSON.stringify({
 				mood: mood,
 				entry: text,
-				user_id: 4
+				user_id: 1
 			}),
 			headers: {"Content-Type": "application/json"}
 		}
@@ -176,7 +182,7 @@ export const deleteUser = () => dispatch => {
 	return fetch(url,
 		{
 			method: "DELETE",
-			body: JSON.stringify({id: 2}),
+			body: JSON.stringify({id: 1}),
 			headers: {"Content-Type": "application/json"}
 		}
 	)

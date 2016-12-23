@@ -6,12 +6,8 @@
 body {
   background-color: #689CDE; }
 
-span {
-  text-align: center; }
-
 img {
-  margin: 10px;
-}
+  margin: 10px; }
 
 li {
   padding: 10px;
@@ -23,15 +19,11 @@ ul {
 
 .textinput {
   width: 100%;
-  border-radius: 5px;
-}
-
-
+  border-radius: 5px; }
 
 .home {
   background-color: white;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 .welcome {
   flex-direction: column;
@@ -45,21 +37,19 @@ ul {
   background-color: white;
   border-radius: 5px; }
 
-
-
 .journal-entry {
-  width: 65%;
+	background-color: #d2d2d2;
+	width: 65%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px; }
 
 .awkward::before {
   padding-top: 2cm;
-  content: url('../assets/happiness.png')
- }
+  content: url('../assets/happiness.png') }
 
 .awkward {
-  background-color: #be829b; }  
+  background-color: #be829b; }
 
 .bored {
   background-color: #e3d1b6; }

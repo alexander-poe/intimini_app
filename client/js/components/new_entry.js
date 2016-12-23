@@ -8,6 +8,9 @@ class NewEntry extends React.Component {
 
 	sendAddData(e) {
 		e.preventDefault();
+		this.moodInput.value === 'mood' ?
+			this.moodInput.value = '' :
+			this.moodInput.value;
 		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
 		this.textInput.value = '';
 		this.moodInput.value = '';
@@ -19,12 +22,16 @@ class NewEntry extends React.Component {
 				<ul>
 					<li>
 						&nbsp;
-						<input
-						type="text"
-						className="textinput"
-						placeholder="mood"
-						ref={moodInput => this.moodInput = moodInput}
-						/>
+						<select ref={input => this.moodInput = input}>
+							<option value="mood">Mood</option>
+							<option value="happy">Happy</option>
+							<option value="excited">Excited</option>
+							<option value="awkward">Awkward</option>
+							<option value="ambivalent">Ambivalent</option>
+							<option value="bored">Bored</option>
+							<option value="sad">Sad</option>
+							<option value="depressed">Depressed</option>
+						</select>
 					</li>
 					<li>
 						<textarea

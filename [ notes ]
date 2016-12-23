@@ -1,6 +1,9 @@
+HARDCODED:
+user/welcome.js
+user id/post new entry/actions.js
+user id/delete user/actions.js
+
 - refresh/update to correct pages after changes
 - on blur...
-**** - make new entries COLORFUL
-**** - where tf is the single entry! i cry ****
 - clean up backend endpoints
 - complete CRUD endpoints w/ reducers for all action creators
