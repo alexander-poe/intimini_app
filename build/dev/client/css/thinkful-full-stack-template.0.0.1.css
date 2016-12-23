@@ -75,34 +75,60 @@ ul {
   margin-right: auto;
   border-radius: 5px; }
 
-.awkward::before {
-  margin-right: auto;
-  margin-left: auto;
+.awkward img {
   content: url("../assets/happiness.png"); }
 
 .awkward {
-  background-color: #be829b; }
+  background-color: #be829b;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .bored {
-  background-color: #e3d1b6; }
+  background-color: #e3d1b6;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .depressed {
   background-color: #128a94;
-  color: white; }
+  color: white;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .happy {
-  background-color: #f6bd60; }
+  background-color: #f6bd60;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .excited {
-  background-color: #d0c022; }
+  background-color: #d0c022;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .ambivalent {
   background-color: #315e65;
-  color: white; }
+  color: white;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .sad {
   background-color: #c8f3f4;
-  color: black; }
+  color: black;
+  border: 1px solid #E6E6E6;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 /*# sourceMappingURL=thinkful-full-stack-template.0.0.1.css.map */
 
