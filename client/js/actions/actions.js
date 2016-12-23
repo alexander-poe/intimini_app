@@ -105,6 +105,8 @@ export const postNewEntry = (text, mood) => dispatch => {
 			return res;
 		}).then(res => {
 			console.log('post entry success');
+			dispatch(selectMood('all'));
+			dispatch(getEntries());			
 		}).catch(err => {
 			console.log('error:', err);
 		});

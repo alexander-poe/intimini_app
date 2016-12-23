@@ -17,19 +17,14 @@ function Welcome (props) {
 		<div className="welcome">
 			<h1>Welcome to Intimini</h1>
 			<br />
-
 			<img src="../assets/calendar.png" height="70" width="70"/>
-			
-			
-				<hr/>
+			<hr/>
 			<br/>
 			<span>
-				<h4> {month} </h4>
-				<h4> {date} </h4>
-				<button 
-				className="pure-button"
-				onClick={props.logInUser}>Come on in!</button>
-
+				<h4> {month}&nbsp;{date} </h4>
+				<button
+					className="pure-button"
+					onClick={props.logInUser}>Come on in!</button>
 			</span>
 		</div>
 	)
@@ -38,8 +33,7 @@ function Welcome (props) {
 const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch) => ({
 	logInUser: function () {
-		dispatch(toggleLogin(1))
-
+		dispatch(toggleLogin(1));
 	}
 });
 

@@ -11,3 +11,4 @@ user id/delete user/actions.js
 
 - on blur...
 - clean up backend endpoints
+- let user pick color scheme, add moods
