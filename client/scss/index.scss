@@ -7,18 +7,16 @@ body {
   background-color: #689CDE; }
 
 hr {
-  color: #E6E6E6
-}
+  color: #E6E6E6; }
 
-p{
-  font-size: 1.2em;
-}
+p {
+  font-size: 1.2em; }
+
 span {
   text-align: center; }
 
 img {
-  margin: 10px;
-}
+  margin: 10px; }
 
 li {
   padding: 10px;
@@ -36,9 +34,7 @@ ul {
   top: 4%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%) 
-  
-}
+  transform: translate(-50%, -50%); }
 
 .textinput {
   width: 100%;
@@ -51,17 +47,13 @@ ul {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%) 
-  
-}
+    transform: translate(-50%, -50%); }
+
 .postcontain {
-  width: 100%;
-}
+  width: 100%; }
 
 .dropsize {
-  height: 35px;
-}
-
+  height: 35px; }
 
 .home {
   background-color: white;
@@ -82,35 +74,30 @@ ul {
   border-radius: 5px;
   border: 1px solid #E6E6E6}
 
-
-
 .journal-entry {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+	margin-top: 20px;
   border-radius: 5px; }
 
 .awkward::before {
   position: relative;
   left: 722px;
   top: 32px;
-  content: url('../assets/sad.png');
-
- } 
+  content: url('../assets/sad.png'); }
 
 .awkward {
   background-color: #be829b;
   border: 1px solid #E6E6E6;
-  
-   }  
+
+   }
 
 .bored::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/dead.png');
-
- } 
+  top: 32px;
+  content: url('../assets/dead.png'); }
 
 .bored {
   background-color: #e3d1b6;
@@ -119,61 +106,51 @@ ul {
 .depressed::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/goofy.png');
-
- }   
+  top: 32px;
+  content: url('../assets/goofy.png'); }
 
 .depressed {
   background-color: #128a94;
-  color: white; 
-  border: 1px solid #E6E6E6;}
+  color: white;
+  border: 1px solid #E6E6E6; }
 
 .happy::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/kiss.png');
-
- }  
+  top: 32px;
+  content: url('../assets/kiss.png'); }
 
 .happy {
-  background-color: #f6bd60; 
+  background-color: #f6bd60;
   border: 1px solid #E6E6E6;}
 
 .excited {
-  color: white; 
+  color: white;
   background-color: #34A855;
   border: 1px solid #E6E6E6;}
 
 .excited::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/hilarious.png');
-
- }  
+  top: 32px;
+  content: url('../assets/hilarious.png'); }
 
 .ambivalent::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/thief.png');
-
- }  
+  top: 32px;
+  content: url('../assets/thief.png'); }
 
 .ambivalent {
   background-color: #315e65;
-  color: white; 
+  color: white;
   border: 1px solid #E6E6E6;}
 
 .sad::before {
   position: relative;
   left: 722px;
-   top: 32px;
-  content: url('../assets/indifferent.png');
-
- }    
+  top: 32px;
+  content: url('../assets/indifferent.png'); }
 
 .sad {
   background-color: #c8f3f4;
