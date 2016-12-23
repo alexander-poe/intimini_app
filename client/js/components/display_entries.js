@@ -30,11 +30,12 @@ class DisplayEntries extends React.Component {
 					key={idx}
 					id={entry.id}
 					>
-					<ul>
-						<li className={classNames}>{mood}</li>
+					
+						<li><span>{mood}</span></li>
+						<hr/>
 						<li>{content}</li>
-						<li>{date}</li>
-					</ul>
+						<li>Entry Created: {date}</li>
+					
 				</div>
 			);
 		});

@@ -20,7 +20,7 @@ function Welcome (props) {
 			
 			
 				<hr/>
-			<br />
+			<br/>
 			<span>
 				<h4> {month} </h4>
 				<h4> {date} </h4>

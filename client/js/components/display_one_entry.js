@@ -25,9 +25,10 @@ class DisplayOneEntry extends React.Component {
 			className="textarea" 
 			onSubmit={this.sendAddData}
 			>
+					<div className={entry.mood}></div>
+						
+						
 				<ul>
-					<li>{entry.mood}</li>
-					<li>{entry.date}</li>
 					<li><textarea
 						className="textinput" 
 						rows="10"
