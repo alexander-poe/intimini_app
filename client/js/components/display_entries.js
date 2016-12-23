@@ -14,7 +14,7 @@ class DisplayEntries extends React.Component {
 			return (entry.user_id === authUser);
 		});
 		const eachEntry = this.props.entries.map((entry, idx) => {
-			const elength = entry.length; 
+			const elength = entry.length;
 			if (entry.mood === 'happy') {
 				moodObj[0] += 1;
 			} else if (entry.mood === 'excited') {
@@ -29,7 +29,7 @@ class DisplayEntries extends React.Component {
 				moodObj[5] += 1;
 			} else if (entry.mood === 'ambivalent') {
 				moodObj[6] += 1;
-			} 
+			}
 			console.log(elength, moodObj)
 			const moodCount = `Out of ${elength} entries
 								happy: ${moodObj[0]}
@@ -58,8 +58,8 @@ class DisplayEntries extends React.Component {
 					key={idx}
 					id={entry.id}
 					>
-					
-						<li><span className="ctr">{mood}</span></li>
+
+						<li className="depressed"><span className="ctr">{mood}</span></li>
 						<li>{content}</li>
 						<li>Entry Created: {date}</li>
 				</div>
@@ -68,8 +68,8 @@ class DisplayEntries extends React.Component {
 			return (
 				<div>
 				 {eachEntry}
-				
-			
+
+
 				</div>
 			)
 	}

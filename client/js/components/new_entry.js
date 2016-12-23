@@ -32,7 +32,7 @@ class NewEntry extends React.Component {
 					<ul>
 						<li>
 							&nbsp;
-							<select ref={input => this.moodInput = input}>
+							<select className="pure-button" ref={input => this.moodInput = input}>
 								<option value="mood">Mood</option>
 								<option value="happy">Happy</option>
 								<option value="excited">Excited</option>

@@ -11,6 +11,9 @@ body {
 hr {
   color: #E6E6E6; }
 
+h2 {
+	padding-bottom: 20px; }
+
 p, h4 {
   font-size: 1.5em; }
 
@@ -30,12 +33,21 @@ ul {
   margin: 0; }
 
 textarea {
+	padding: 0px;
 	border: none;
 	background-color: white;
 	resize: none;
 	outline: none; }
 
+.icon {
+	margin-left: 10px; }
+
+.menu-bar {
+	margin-right: 20px;
+	margin-left: 20px; }
+
 .ctr {
+	margin: 20px;
   padding: 10px;
   background-color: #F8F8F8;
   left: 50%;
@@ -94,7 +106,7 @@ textarea {
 
 .awkward::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/sad.png'); }
 
@@ -105,7 +117,7 @@ textarea {
 
 .bored::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/dead.png'); }
 
@@ -116,7 +128,7 @@ textarea {
 
 .depressed::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/goofy.png'); }
 
@@ -128,7 +140,7 @@ textarea {
 
 .happy::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/kiss.png'); }
 
@@ -139,7 +151,7 @@ textarea {
 
 .excited::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/hilarious.png'); }
 
@@ -151,7 +163,7 @@ textarea {
 
 .ambivalent::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/thief.png'); }
 
@@ -163,7 +175,7 @@ textarea {
 
 .sad::before {
   position: relative;
-  left: 722px;
+  left: 50%;
   top: 32px;
   content: url('../assets/indifferent.png'); }
 
