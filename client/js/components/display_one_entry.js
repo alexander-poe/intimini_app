@@ -28,8 +28,8 @@ class DisplayOneEntry extends React.Component {
 			onSubmit={this.sendAddData}
 			>
 					<div></div>
-						
-						
+
+
 				<ul>
 					<li><textarea
 						className="textinput"
@@ -38,7 +38,7 @@ class DisplayOneEntry extends React.Component {
 						ref={input => this.textInput = input}
 						defaultValue={entry.entry} />
 					</li>
-					<button className="pure-button" type="submit">Edit</button>
+					<button className="pure-button" type="submit">Save Edit</button>
 					&nbsp;
 					<button
 						className="pure-button delete-button"

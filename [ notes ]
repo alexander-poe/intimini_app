@@ -3,7 +3,11 @@ user/welcome.js
 user id/post new entry/actions.js
 user id/delete user/actions.js
 
-- refresh/update to correct pages after changes
+- cancel edit button
+- change emojis
+- centering!
+- color scheme
+- padding btwn entries
+
 - on blur...
 - clean up backend endpoints
-- complete CRUD endpoints w/ reducers for all action creators

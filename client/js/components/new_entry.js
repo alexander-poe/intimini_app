@@ -23,13 +23,10 @@ class NewEntry extends React.Component {
 		this.props.dispatch(actions.getEntries());
 	}
 
-
-
-
 	render () {
 		return (
-			<form 
-			className="textarea" 
+			<form
+			className="textarea"
 			onSubmit={this.sendAddData}>
 				<ul>
 					<li>
@@ -63,7 +60,7 @@ class NewEntry extends React.Component {
                         Record my thoughts
                     </button>
 					</div>
-				
+
 				</ul>
 			</form>
 		)
@@ -73,11 +70,10 @@ class NewEntry extends React.Component {
 const mapStateToProps = (state, props) => ({
 	store: state
 });
-const mapDispatchToProps = (dispatch) => ({
-	newSubmission: function () {
-		dispatch(toggleLogin(1))
-	}
-});
+// const mapDispatchToProps = (dispatch) => ({
+// 	newSubmission: function () {
+// 		dispatch(toggleLogin(1))
+// 	}
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewEntry);
-
+export default connect(mapStateToProps)(NewEntry);
