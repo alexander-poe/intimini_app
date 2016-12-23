@@ -103,7 +103,7 @@ textarea {
 
 .awkward::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/sad.png"); }
 
@@ -113,7 +113,7 @@ textarea {
 
 .bored::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/dead.png"); }
 
@@ -123,7 +123,7 @@ textarea {
 
 .depressed::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/goofy.png"); }
 
@@ -134,7 +134,7 @@ textarea {
 
 .happy::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/kiss.png"); }
 
@@ -144,7 +144,7 @@ textarea {
 
 .excited::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/hilarious.png"); }
 
@@ -155,7 +155,7 @@ textarea {
 
 .ambivalent::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/thief.png"); }
 
@@ -166,7 +166,7 @@ textarea {
 
 .sad::before {
   position: relative;
-  left: 50%;
+  left: 48%;
   top: 32px;
   content: url("../assets/indifferent.png"); }
 

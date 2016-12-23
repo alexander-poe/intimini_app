@@ -59,7 +59,7 @@ class DisplayEntries extends React.Component {
 					id={entry.id}
 					>
 
-						<li className="depressed"><span className="ctr">{mood}</span></li>
+						<li><span className="ctr">{mood}</span></li>
 						<li>{content}</li>
 						<li>Entry Created: {date}</li>
 				</div>
