@@ -1,5 +1,5 @@
-const users_url = "http://localhost:8080/users";
-const entries_url = "http://localhost:8080/entries";
+const users_url = "/users";
+const entries_url = "/entries";
 
 export const SHOW_NEW_ENTRY = 'SHOW_NEW_ENTRY';
 export const showNewEntry = () => ({
@@ -134,7 +134,6 @@ export const deleteEntry = (id) => dispatch => {
 }
 
 export const updateEntry = (id, mood, selected, entry) => dispatch => {
-	debugger;
 	return fetch(entries_url + '/',
 		{
 			method: "PUT",
@@ -147,7 +146,6 @@ export const updateEntry = (id, mood, selected, entry) => dispatch => {
 			headers: {"Content-Type": "application/json"}
 		}
 	).then(res => {
-		debugger;
 			if(!res.ok) {
 				throw new Error(res.statusText);
 			}
