@@ -25,7 +25,7 @@ class DisplayOneEntry extends React.Component {
 			className="textarea" 
 			onSubmit={this.sendAddData}
 			>
-					<div className={entry.mood}></div>
+					<div></div>
 						
 						
 				<ul>
