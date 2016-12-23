@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect } from 'react-redux';
+import { getEntries } from '../actions/actions';
 
 class NewEntry extends React.Component {
 	constructor (props) {
@@ -7,15 +9,23 @@ class NewEntry extends React.Component {
 	}
 
 	sendAddData(e) {
-		e.preventDefault();
-		this.props.postNewEntry(this.textInput.value, this.moodInput.value);
-		this.textInput.value = '';
-		this.moodInput.value = '';
+		if (e.key === 'Enter') {
+			e.preventDefault();
+			this.props.postNewEntry(this.textInput.value, this.moodInput.value);
+			this.textInput.value = '';
+			this.moodInput.value = '';
+			//this.props.newSubmission;
+		}
 	}
+
+
+
 
 	render () {
 		return (
-			<form className="textarea" onSubmit={this.sendAddData}>
+			<form 
+			className="textarea" 
+			onKeyPress={this.sendAddData}>
 				<ul>
 					<li>
 						&nbsp;
@@ -29,21 +39,26 @@ class NewEntry extends React.Component {
 					<li>
 						<textarea
 						    id="clear"
+						    placeholder="Press Enter to Submit..."
 							className="textinput"
 							rows="10"
 							cols="100"
 							ref={input => this.textInput = input}
 						></textarea>
 					</li>
-					<button
-						type="submit"
-						className="submitButton">
-						Record my thoughts
-					</button>
+					<div className="postcontain">
+					</div>
 				</ul>
 			</form>
 		)
 	}
 }
 
-export default NewEntry;
+const mapStateToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+	newSubmission: function () {
+		dispatch(toggleLogin(1))
+	}
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewEntry);

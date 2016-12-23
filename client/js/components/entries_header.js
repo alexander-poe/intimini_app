@@ -9,7 +9,7 @@ class EntriesHeader extends React.Component {
 	changeFilter (e) {
 		e.preventDefault();
 		let filterVal = this.mood.value;
-		console.log(filterVal)
+		console.log(filterVal)//props action dispatch action that does server by mood. something select moods, if mood === entry mood then map. 
 	}
 
 	render () {
@@ -20,7 +20,7 @@ class EntriesHeader extends React.Component {
 				</form>
 				<hr />
 				<form onSubmit={this.changeFilter}>
-					<select>
+					<select className="pure-button dropsize">
 						<option value="mood">Mood</option>
 						<option value="happy" ref={input => this.mood = input}>
 							Happy</option>
@@ -29,7 +29,7 @@ class EntriesHeader extends React.Component {
 						<option value="bored" ref={input => this.mood = input}>
 							Bored</option>
 					</select>
-					<button type="submit">Filter</button>
+					<button className="pure-button" type="submit">Filter</button>
 				</form>
 				<hr />
 			</div>

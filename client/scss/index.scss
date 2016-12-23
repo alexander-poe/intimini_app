@@ -1,10 +1,14 @@
 * {
-  font-family: 'Shadows Into Light Two', cursive;
+ font-family: 'Droid Serif', serif;
   list-style: none;
   box-sizing: border-box; }
 
 body {
   background-color: #689CDE; }
+
+hr {
+  color: #E6E6E6
+}
 
 span {
   text-align: center; }
@@ -26,6 +30,23 @@ ul {
   border-radius: 5px;
 }
 
+.post {
+    padding: 10px;
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+  
+}
+.postcontain {
+  width: 100%;
+}
+
+.dropsize {
+  height: 35px;
+}
 
 
 .home {
@@ -43,7 +64,8 @@ ul {
   height: auto;
   margin: 0 auto;
   background-color: white;
-  border-radius: 5px; }
+  border-radius: 5px;
+  border: 1px solid #E6E6E6}
 
 
 
@@ -53,10 +75,11 @@ ul {
   margin-right: auto;
   border-radius: 5px; }
 
-.awkward::before {
-  padding-top: 2cm;
+ .awkward::before {
+  margin-right: auto;
+  margin-left:auto;
   content: url('../assets/happiness.png')
- }
+ } 
 
 .awkward {
   background-color: #be829b; }  

@@ -33,6 +33,7 @@ class DisplayEntries extends React.Component {
 					<ul>
 						<li>{mood}</li>
 						<li>{content}</li>
+						<li>{date}</li>
 					</ul>
 				</div>
 			);
