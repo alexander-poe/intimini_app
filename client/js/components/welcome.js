@@ -4,22 +4,25 @@ import {connect } from 'react-redux';
 import { toggleLogin } from '../actions/actions';
 
 function Welcome (props) {
+	console.log('these', props)
 	const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-	const time = new Date();
-	const d = time.getDay();
-	const day = days[d];
-	const date = time.getDate();
-	const message = `${day}`
+	const months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+	const d = new Date();
+	const date = d.getDate();
+	const mn = d.getMonth();
+	const dn = d.getDay();
+	const month = months[mn];
+	const day = days[dn];
 
 	return (
 		<div className="welcome">
-			<img src="../assets/calendar.png" height="50" width="50"/>
-			<h2>Mood Calendar</h2>
-				<hr/>
+			<img src="../assets/calendar.png" height="70" width="70"/>
 			
+			
+				<hr/>
 			<br />
 			<span>
-				<h4> {message} </h4>
+				<h4> {month} </h4>
 				<h4> {date} </h4>
 				<button 
 				className="pure-button"
@@ -33,6 +36,7 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch) => ({
 	logInUser: function () {
 		dispatch(toggleLogin(1))
+
 	}
 });
 

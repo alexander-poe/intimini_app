@@ -5,16 +5,17 @@ import { getEntries } from '../actions/actions';
 class NewEntry extends React.Component {
 	constructor (props) {
 		super(props);
+		console.log('here',props)
 		this.sendAddData = this.sendAddData.bind(this);
 	}
 
 	sendAddData(e) {
 		if (e.key === 'Enter') {
+			console.log(this.props)
 			e.preventDefault();
 			this.props.postNewEntry(this.textInput.value, this.moodInput.value);
 			this.textInput.value = '';
 			this.moodInput.value = '';
-			//this.props.newSubmission;
 		}
 	}
 

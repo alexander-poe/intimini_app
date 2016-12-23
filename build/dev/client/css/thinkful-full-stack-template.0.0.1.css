@@ -23,6 +23,16 @@ ul {
   padding: 0;
   margin: 0; }
 
+.MoodCalHeading {
+  font-size: 2em;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  top: 4%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); }
+
 .textinput {
   width: 100%;
   border-radius: 5px; }
@@ -43,7 +53,8 @@ ul {
 
 .home {
   background-color: white;
-  border-radius: 5px; }
+  border-radius: 5px;
+  border: 1px solid #E6E6E6; }
 
 .welcome {
   flex-direction: column;
